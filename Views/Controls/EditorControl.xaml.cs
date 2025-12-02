@@ -187,7 +187,12 @@ namespace PseudoRun.Desktop.Views.Controls
                     element =>
                     {
                         element.TextRunProperties.SetForegroundBrush(Brushes.Blue);
-                        element.TextRunProperties.SetFontWeight(FontWeights.Bold);
+                        var typeface = new Typeface(
+                            element.TextRunProperties.Typeface.FontFamily,
+                            FontStyles.Normal,
+                            FontWeights.Bold,
+                            FontStretches.Normal);
+                        element.TextRunProperties.SetTypeface(typeface);
                     });
             }
 
