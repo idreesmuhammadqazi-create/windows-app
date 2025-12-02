@@ -3,12 +3,14 @@ using ICSharpCode.AvalonEdit.CodeCompletion;
 using ICSharpCode.AvalonEdit.Document;
 using ICSharpCode.AvalonEdit.Editing;
 using ICSharpCode.AvalonEdit.Highlighting;
-using ICSharpCode.AvalonEdit.Highlighting.Xshd;
+using ICSharpCode.AvalonEdit.Rendering;
 using System;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Xml;
 
 namespace PseudoRun.Desktop.Views.Controls
@@ -53,72 +55,8 @@ namespace PseudoRun.Desktop.Views.Controls
 
         private void SetupSyntaxHighlighting()
         {
-            // Create custom syntax highlighting for IGCSE pseudocode
-            var highlighting = new HighlightingDefinition();
-
-            // Keywords
-            var keywordColor = new HighlightingColor
-            {
-                Foreground = new SimpleHighlightingBrush(System.Windows.Media.Colors.Blue),
-                FontWeight = FontWeights.Bold
-            };
-
-            var keywordRule = new HighlightingRule
-            {
-                Color = keywordColor,
-                Regex = new System.Text.RegularExpressions.Regex(
-                    @"\b(DECLARE|CONSTANT|IF|THEN|ELSE|ENDIF|WHILE|DO|ENDWHILE|REPEAT|UNTIL|FOR|TO|STEP|NEXT|" +
-                    @"CASE|OF|OTHERWISE|ENDCASE|INTEGER|REAL|STRING|CHAR|BOOLEAN|ARRAY|INPUT|OUTPUT|" +
-                    @"PROCEDURE|ENDPROCEDURE|FUNCTION|ENDFUNCTION|RETURN|RETURNS|CALL|BYVAL|BYREF|" +
-                    @"TRUE|FALSE|AND|OR|NOT|DIV|MOD|OPENFILE|CLOSEFILE|READFILE|WRITEFILE|EOF|READ|WRITE|APPEND)\b",
-                    System.Text.RegularExpressions.RegexOptions.IgnoreCase)
-            };
-
-            // Strings
-            var stringColor = new HighlightingColor
-            {
-                Foreground = new SimpleHighlightingBrush(System.Windows.Media.Color.FromRgb(163, 21, 21))
-            };
-
-            var stringRule = new HighlightingRule
-            {
-                Color = stringColor,
-                Regex = new System.Text.RegularExpressions.Regex(@"""[^""]*""")
-            };
-
-            // Numbers
-            var numberColor = new HighlightingColor
-            {
-                Foreground = new SimpleHighlightingBrush(System.Windows.Media.Color.FromRgb(0, 128, 128))
-            };
-
-            var numberRule = new HighlightingRule
-            {
-                Color = numberColor,
-                Regex = new System.Text.RegularExpressions.Regex(@"\b\d+\.?\d*\b")
-            };
-
-            // Comments
-            var commentColor = new HighlightingColor
-            {
-                Foreground = new SimpleHighlightingBrush(System.Windows.Media.Colors.Green)
-            };
-
-            var commentRule = new HighlightingRule
-            {
-                Color = commentColor,
-                Regex = new System.Text.RegularExpressions.Regex(@"//.*$", System.Text.RegularExpressions.RegexOptions.Multiline)
-            };
-
-            var mainRuleSet = new HighlightingRuleSet();
-            mainRuleSet.Rules.Add(keywordRule);
-            mainRuleSet.Rules.Add(stringRule);
-            mainRuleSet.Rules.Add(numberRule);
-            mainRuleSet.Rules.Add(commentRule);
-
-            highlighting.MainRuleSet = mainRuleSet;
-
-            TextEditor.SyntaxHighlighting = highlighting;
+            // Add custom syntax highlighting using DocumentColorizingTransformer
+            TextEditor.TextArea.TextView.LineTransformers.Add(new PseudocodeColorizer());
         }
 
         private void TextArea_TextEntering(object? sender, TextCompositionEventArgs e)
@@ -207,6 +145,74 @@ namespace PseudoRun.Desktop.Views.Controls
         public void Complete(TextArea textArea, ISegment completionSegment, EventArgs insertionRequestEventArgs)
         {
             textArea.Document.Replace(completionSegment, Text);
+        }
+    }
+
+    /// <summary>
+    /// Provides syntax highlighting for IGCSE Pseudocode
+    /// </summary>
+    public class PseudocodeColorizer : DocumentColorizingTransformer
+    {
+        private static readonly Regex KeywordRegex = new Regex(
+            @"\b(DECLARE|CONSTANT|IF|THEN|ELSE|ENDIF|WHILE|DO|ENDWHILE|REPEAT|UNTIL|FOR|TO|STEP|NEXT|" +
+            @"CASE|OF|OTHERWISE|ENDCASE|INTEGER|REAL|STRING|CHAR|BOOLEAN|ARRAY|INPUT|OUTPUT|" +
+            @"PROCEDURE|ENDPROCEDURE|FUNCTION|ENDFUNCTION|RETURN|RETURNS|CALL|BYVAL|BYREF|" +
+            @"TRUE|FALSE|AND|OR|NOT|DIV|MOD|OPENFILE|CLOSEFILE|READFILE|WRITEFILE|EOF|READ|WRITE|APPEND)\b",
+            RegexOptions.IgnoreCase | RegexOptions.Compiled);
+
+        private static readonly Regex StringRegex = new Regex(@"""[^""]*""", RegexOptions.Compiled);
+        private static readonly Regex NumberRegex = new Regex(@"\b\d+\.?\d*\b", RegexOptions.Compiled);
+        private static readonly Regex CommentRegex = new Regex(@"//.*$", RegexOptions.Multiline | RegexOptions.Compiled);
+
+        protected override void ColorizeLine(DocumentLine line)
+        {
+            int lineStartOffset = line.Offset;
+            string text = CurrentContext.Document.GetText(line);
+
+            // Colorize comments first (they take precedence)
+            foreach (Match match in CommentRegex.Matches(text))
+            {
+                ChangeLinePart(
+                    lineStartOffset + match.Index,
+                    lineStartOffset + match.Index + match.Length,
+                    element => element.TextRunProperties.SetForegroundBrush(Brushes.Green));
+            }
+
+            // Colorize keywords
+            foreach (Match match in KeywordRegex.Matches(text))
+            {
+                ChangeLinePart(
+                    lineStartOffset + match.Index,
+                    lineStartOffset + match.Index + match.Length,
+                    element =>
+                    {
+                        element.TextRunProperties.SetForegroundBrush(Brushes.Blue);
+                        var typeface = new Typeface(
+                            element.TextRunProperties.Typeface.FontFamily,
+                            FontStyles.Normal,
+                            FontWeights.Bold,
+                            FontStretches.Normal);
+                        element.TextRunProperties.SetTypeface(typeface);
+                    });
+            }
+
+            // Colorize strings
+            foreach (Match match in StringRegex.Matches(text))
+            {
+                ChangeLinePart(
+                    lineStartOffset + match.Index,
+                    lineStartOffset + match.Index + match.Length,
+                    element => element.TextRunProperties.SetForegroundBrush(new SolidColorBrush(Color.FromRgb(163, 21, 21))));
+            }
+
+            // Colorize numbers
+            foreach (Match match in NumberRegex.Matches(text))
+            {
+                ChangeLinePart(
+                    lineStartOffset + match.Index,
+                    lineStartOffset + match.Index + match.Length,
+                    element => element.TextRunProperties.SetForegroundBrush(new SolidColorBrush(Color.FromRgb(0, 128, 128))));
+            }
         }
     }
 }
