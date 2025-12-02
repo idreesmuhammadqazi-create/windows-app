@@ -1,0 +1,47 @@
+[
+  {
+    "title": "Welcome to Pseudocode Runner!",
+    "content": "This tutorial will guide you through writing and running your first IGCSE/A-Level pseudocode program. Click Next to continue.",
+    "code": null
+  },
+  {
+    "title": "Step 1: Variables",
+    "content": "Variables store data. Use DECLARE to create them with a type (INTEGER, REAL, STRING, BOOLEAN).",
+    "code": "DECLARE Age : INTEGER\nDECLARE Name : STRING\nAge <- 16\nName <- \"Alice\"\nOUTPUT Name, \" is \", Age, \" years old\""
+  },
+  {
+    "title": "Step 2: Input & Output",
+    "content": "Use INPUT to get data from users and OUTPUT to display results.",
+    "code": "DECLARE Number : INTEGER\nOUTPUT \"Enter a number:\"\nINPUT Number\nOUTPUT \"You entered: \", Number"
+  },
+  {
+    "title": "Step 3: IF Statements",
+    "content": "Make decisions with IF-THEN-ELSE statements.",
+    "code": "DECLARE Score : INTEGER\nScore <- 85\nIF Score >= 70 THEN\n    OUTPUT \"Pass\"\nELSE\n    OUTPUT \"Fail\"\nENDIF"
+  },
+  {
+    "title": "Step 4: Loops",
+    "content": "Repeat code with FOR, WHILE, or REPEAT loops.",
+    "code": "DECLARE Counter : INTEGER\nFOR Counter <- 1 TO 5\n    OUTPUT \"Count: \", Counter\nNEXT Counter"
+  },
+  {
+    "title": "Step 5: Arrays",
+    "content": "Store multiple values in arrays. Arrays start at index 1.",
+    "code": "DECLARE Numbers : ARRAY[1:5] OF INTEGER\nDECLARE i : INTEGER\nFOR i <- 1 TO 5\n    Numbers[i] <- i * 10\nNEXT i\nOUTPUT Numbers[3]"
+  },
+  {
+    "title": "Step 6: Procedures",
+    "content": "Group reusable code into procedures.",
+    "code": "PROCEDURE Greet(Name : STRING)\n    OUTPUT \"Hello, \", Name\nENDPROCEDURE\n\nCALL Greet(\"Student\")"
+  },
+  {
+    "title": "Step 7: Functions",
+    "content": "Functions are like procedures but return a value.",
+    "code": "FUNCTION Square(Num : INTEGER) RETURNS INTEGER\n    RETURN Num * Num\nENDFUNCTION\n\nDECLARE Result : INTEGER\nResult <- Square(5)\nOUTPUT \"5 squared is \", Result"
+  },
+  {
+    "title": "You're Ready!",
+    "content": "You now know the basics! Try the Examples menu for more complex programs, or start coding your own. Use Ctrl+Space for autocomplete suggestions.",
+    "code": null
+  }
+]

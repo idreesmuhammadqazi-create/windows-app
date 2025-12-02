@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "level": "IGCSE",
+    "topic": "Variables & Output",
+    "title": "Calculate Rectangle Area",
+    "description": "Write a program that declares variables for length and width, assigns values (length = 10, width = 5), calculates the area, and outputs the result.",
+    "hints": ["Declare three INTEGER variables: Length, Width, and Area", "Use the <- operator to assign values", "Area formula: Length * Width"],
+    "solution": "DECLARE Length : INTEGER\nDECLARE Width : INTEGER\nDECLARE Area : INTEGER\n\nLength <- 10\nWidth <- 5\nArea <- Length * Width\n\nOUTPUT \"The area is: \", Area"
+  },
+  {
+    "id": 2,
+    "level": "IGCSE",
+    "topic": "Input & Selection",
+    "title": "Pass or Fail",
+    "description": "Write a program that inputs a student's score (0-100) and outputs \"Pass\" if the score is 50 or above, or \"Fail\" otherwise.",
+    "hints": ["Use INPUT to get the score", "Use IF-THEN-ELSE for the decision", "Pass mark is >= 50"],
+    "solution": "DECLARE Score : INTEGER\n\nOUTPUT \"Enter your score:\"\nINPUT Score\n\nIF Score >= 50 THEN\n    OUTPUT \"Pass\"\nELSE\n    OUTPUT \"Fail\"\nENDIF"
+  }
+]

@@ -1,0 +1,166 @@
+<Window x:Class="PseudoRun.Desktop.Views.Dialogs.SyntaxReferenceDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Syntax Reference"
+        Width="900"
+        Height="650"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="CanResize">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Grid.Row="0"
+                Background="{StaticResource AccentBrush}"
+                Padding="20,15">
+            <TextBlock Text="Syntax Reference"
+                       FontSize="20"
+                       FontWeight="Bold"
+                       Foreground="White"/>
+        </Border>
+
+        <!-- Search Bar -->
+        <Border Grid.Row="1"
+                Background="{StaticResource SurfaceBrush}"
+                Padding="20,10"
+                BorderBrush="{StaticResource BorderBrush}"
+                BorderThickness="0,0,0,1">
+            <TextBox Text="{Binding SearchTerm, UpdateSourceTrigger=PropertyChanged}"
+                     FontSize="13"
+                     Padding="8"
+                     BorderBrush="{StaticResource BorderBrush}"
+                     BorderThickness="1">
+                <TextBox.Style>
+                    <Style TargetType="TextBox">
+                        <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="">
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <VisualBrush Stretch="None" AlignmentX="Left">
+                                            <VisualBrush.Visual>
+                                                <TextBlock Text="Search syntax..."
+                                                          Foreground="{StaticResource SecondaryTextBrush}"
+                                                          Margin="5,0,0,0"/>
+                                            </VisualBrush.Visual>
+                                        </VisualBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+        </Border>
+
+        <!-- Content Area -->
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Sidebar: Categories -->
+            <Border Grid.Column="0"
+                    Background="{StaticResource SurfaceBrush}"
+                    BorderBrush="{StaticResource BorderBrush}"
+                    BorderThickness="0,0,1,0">
+                <ListBox ItemsSource="{Binding Categories}"
+                         SelectedItem="{Binding SelectedCategory}"
+                         BorderThickness="0"
+                         Background="Transparent">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Category}"
+                                       Padding="10,8"
+                                       TextWrapping="Wrap"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Border>
+
+            <!-- Main Content: Syntax Items -->
+            <ScrollViewer Grid.Column="1"
+                          VerticalScrollBarVisibility="Auto"
+                          Padding="20">
+                <ItemsControl ItemsSource="{Binding SelectedCategory.Items}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Margin="0,0,0,20"
+                                    Padding="15"
+                                    Background="{StaticResource BackgroundBrush}"
+                                    BorderBrush="{StaticResource BorderBrush}"
+                                    BorderThickness="1"
+                                    CornerRadius="3">
+                                <StackPanel>
+                                    <!-- Title -->
+                                    <TextBlock Text="{Binding Title}"
+                                               FontSize="16"
+                                               FontWeight="Bold"
+                                               Margin="0,0,0,5"/>
+
+                                    <!-- Description -->
+                                    <TextBlock Text="{Binding Description}"
+                                               TextWrapping="Wrap"
+                                               Margin="0,0,0,10"
+                                               Foreground="{StaticResource SecondaryTextBrush}"/>
+
+                                    <!-- Syntax -->
+                                    <TextBlock Text="Syntax:"
+                                               FontWeight="Bold"
+                                               FontSize="12"
+                                               Margin="0,5,0,5"/>
+                                    <Border Background="{StaticResource CodeBackgroundBrush}"
+                                            BorderBrush="{StaticResource BorderBrush}"
+                                            BorderThickness="1"
+                                            CornerRadius="3"
+                                            Padding="10"
+                                            Margin="0,0,0,10">
+                                        <TextBlock Text="{Binding Syntax}"
+                                                   FontFamily="Consolas"
+                                                   FontSize="11"
+                                                   TextWrapping="Wrap"/>
+                                    </Border>
+
+                                    <!-- Example -->
+                                    <TextBlock Text="Example:"
+                                               FontWeight="Bold"
+                                               FontSize="12"
+                                               Margin="0,5,0,5"/>
+                                    <Border Background="{StaticResource CodeBackgroundBrush}"
+                                            BorderBrush="{StaticResource BorderBrush}"
+                                            BorderThickness="1"
+                                            CornerRadius="3"
+                                            Padding="10">
+                                        <TextBlock Text="{Binding Example}"
+                                                   FontFamily="Consolas"
+                                                   FontSize="11"
+                                                   TextWrapping="Wrap"/>
+                                    </Border>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        </Grid>
+
+        <!-- Footer -->
+        <Border Grid.Row="3"
+                Background="{StaticResource SurfaceBrush}"
+                Padding="20,15"
+                BorderBrush="{StaticResource BorderBrush}"
+                BorderThickness="0,1,0,0">
+            <Button Content="Close"
+                    IsCancel="True"
+                    Width="100"
+                    HorizontalAlignment="Right"/>
+        </Border>
+    </Grid>
+</Window>

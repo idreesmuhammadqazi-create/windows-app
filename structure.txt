@@ -1,0 +1,95 @@
+Folder PATH listing
+Volume serial number is 0000008C 50DE:07BD
+C:\USERS\FAHEEM QAZI\DESKTOP\WINDOWS-APP
+|   App.xaml
+|   App.xaml.cs
+|   IMPLEMENTATION_STATUS.md
+|   PseudoRun.Desktop.csproj
+|   structure.txt
+|   
++---Converters
+|       BoolToVisibilityConverter.cs
+|       InverseBoolToVisibilityConverter.cs
+|       LastStepButtonTextConverter.cs
+|       PauseResumeTextConverter.cs
+|       
++---Data
+|       PracticeProblems.json
+|       SyntaxReference.json
+|       TutorialSteps.json
+|       
++---Interpreter
+|       Interpreter.cs
+|       Lexer.cs
+|       Parser.cs
+|       Types.cs
+|       
++---Models
+|       AppSettings.cs
+|       ExamSession.cs
+|       PracticeProblem.cs
+|       PseudocodeProgram.cs
+|       SyntaxCategory.cs
+|       SyntaxItem.cs
+|       TutorialStep.cs
+|       
++---Resources
+|   +---Icons
+|   \---Styles
+|           ButtonStyles.xaml
+|           Colors.xaml
+|           
++---Services
+|       ExportService.cs
+|       FileIOService.cs
+|       FileService.cs
+|       IExportService.cs
+|       IFileIOService.cs
+|       IFileService.cs
+|       IInterpreterService.cs
+|       InterpreterService.cs
+|       ISettingsService.cs
+|       IValidationService.cs
+|       SettingsService.cs
+|       ValidationService.cs
+|       
++---Utilities
++---Validator
+|       ErrorTypes.cs
+|       SyntaxValidator.cs
+|       
++---ViewModels
+|       DebugViewModel.cs
+|       EditorViewModel.cs
+|       ExamModeViewModel.cs
+|       InterpreterViewModel.cs
+|       MainViewModel.cs
+|       PracticeProblemsViewModel.cs
+|       SyntaxReferenceViewModel.cs
+|       TutorialViewModel.cs
+|       ViewModelBase.cs
+|       
+\---Views
+    |   MainWindow.xaml
+    |   MainWindow.xaml.cs
+    |   
+    +---Controls
+    |       EditorControl.xaml
+    |       EditorControl.xaml.cs
+    |       OutputPanel.xaml
+    |       OutputPanel.xaml.cs
+    |       VariablesPanel.xaml
+    |       VariablesPanel.xaml.cs
+    |       
+    \---Dialogs
+            ExamModeDialog.xaml
+            ExamModeDialog.xaml.cs
+            InputDialog.xaml
+            InputDialog.xaml.cs
+            PracticeProblemsDialog.xaml
+            PracticeProblemsDialog.xaml.cs
+            SyntaxReferenceDialog.xaml
+            SyntaxReferenceDialog.xaml.cs
+            TutorialDialog.xaml
+            TutorialDialog.xaml.cs
+            

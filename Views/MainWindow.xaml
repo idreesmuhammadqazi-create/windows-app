@@ -1,0 +1,103 @@
+<Window x:Class="PseudoRun.Desktop.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="PseudoRun Desktop" Height="800" Width="1200"
+        Background="{StaticResource BackgroundBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Menu Bar -->
+        <Menu Grid.Row="0">
+            <MenuItem Header="_File">
+                <MenuItem Header="_New" Command="{Binding NewFileCommand}" InputGestureText="Ctrl+N"/>
+                <MenuItem Header="_Open..." Command="{Binding OpenFileCommand}" InputGestureText="Ctrl+O"/>
+                <MenuItem Header="_Save" Command="{Binding SaveFileCommand}" InputGestureText="Ctrl+S"/>
+                <MenuItem Header="Save _As..." Command="{Binding SaveFileAsCommand}" InputGestureText="Ctrl+Shift+S"/>
+                <Separator/>
+                <MenuItem Header="_Export">
+                    <MenuItem Header="Export to _PDF..." Click="ExportToPdf_Click"/>
+                    <MenuItem Header="Export to _Word..." Click="ExportToDocx_Click"/>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="E_xit" Click="Exit_Click"/>
+            </MenuItem>
+            <MenuItem Header="_Run">
+                <MenuItem Header="_Run Program" Command="{Binding RunProgramCommand}" InputGestureText="F5"/>
+                <MenuItem Header="_Stop" Command="{Binding StopProgramCommand}" InputGestureText="Shift+F5"/>
+            </MenuItem>
+            <MenuItem Header="_Tools">
+                <MenuItem Header="_Tutorial" Click="Tutorial_Click"/>
+                <MenuItem Header="_Practice Problems" Click="PracticeProblems_Click"/>
+                <MenuItem Header="_Syntax Reference" Click="SyntaxReference_Click"/>
+                <Separator/>
+                <MenuItem Header="_Exam Mode" Click="ExamMode_Click"/>
+            </MenuItem>
+            <MenuItem Header="_Help">
+                <MenuItem Header="_About" Click="About_Click"/>
+            </MenuItem>
+        </Menu>
+
+        <!-- Toolbar -->
+        <ToolBar Grid.Row="1">
+            <Button Content="New" Command="{Binding NewFileCommand}" ToolTip="New File (Ctrl+N)"/>
+            <Button Content="Open" Command="{Binding OpenFileCommand}" ToolTip="Open File (Ctrl+O)"/>
+            <Button Content="Save" Command="{Binding SaveFileCommand}" ToolTip="Save File (Ctrl+S)"/>
+            <Separator/>
+            <Button Content="Run" Command="{Binding RunProgramCommand}" ToolTip="Run Program (F5)" Style="{StaticResource PrimaryButton}"/>
+            <Button Content="Stop" Command="{Binding StopProgramCommand}" ToolTip="Stop Execution (Shift+F5)"/>
+        </ToolBar>
+
+        <!-- Main Content Area -->
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Editor Area -->
+            <Border Grid.Column="0" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1" Margin="5">
+                <TextBox Text="{Binding Code, UpdateSourceTrigger=PropertyChanged}"
+                         AcceptsReturn="True"
+                         FontFamily="Consolas"
+                         FontSize="14"
+                         VerticalScrollBarVisibility="Auto"
+                         HorizontalScrollBarVisibility="Auto"/>
+            </Border>
+
+            <!-- Splitter -->
+            <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch" Background="{StaticResource BorderBrush}"/>
+
+            <!-- Output Area -->
+            <Border Grid.Column="2" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1" Margin="5">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <TextBlock Text="{Binding Output}"
+                               FontFamily="Consolas"
+                               FontSize="12"
+                               Padding="5"
+                               TextWrapping="Wrap"/>
+                </ScrollViewer>
+            </Border>
+        </Grid>
+
+        <!-- Status Bar -->
+        <StatusBar Grid.Row="3">
+            <StatusBarItem>
+                <TextBlock Text="{Binding CurrentFilePath, StringFormat='File: {0}', TargetNullValue='Untitled'}"/>
+            </StatusBarItem>
+            <Separator/>
+            <StatusBarItem>
+                <TextBlock Text="{Binding IsRunning, StringFormat='Status: {0}', ConverterParameter='Running|Ready'}"/>
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+</Window>

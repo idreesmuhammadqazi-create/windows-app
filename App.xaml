@@ -1,0 +1,20 @@
+<Application x:Class="PseudoRun.Desktop.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:converters="clr-namespace:PseudoRun.Desktop.Converters"
+             StartupUri="Views/MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Styles/Colors.xaml"/>
+                <ResourceDictionary Source="Resources/Styles/ButtonStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <!-- Converters -->
+            <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+            <converters:InverseBoolToVisibilityConverter x:Key="InverseBoolToVisibilityConverter"/>
+            <converters:LastStepButtonTextConverter x:Key="LastStepButtonTextConverter"/>
+            <converters:PauseResumeTextConverter x:Key="PauseResumeTextConverter"/>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
