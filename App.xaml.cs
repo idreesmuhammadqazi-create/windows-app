@@ -25,6 +25,8 @@ namespace PseudoRun.Desktop
             services.AddSingleton<ISettingsService, SettingsService>();
             services.AddSingleton<IFileIOService, FileIOService>();
             services.AddSingleton<IExportService, ExportService>();
+            services.AddSingleton<IExamplesService, ExamplesService>();
+            services.AddSingleton<IInputService, InputService>();
             services.AddTransient<IInterpreterService, InterpreterService>();
             services.AddTransient<IValidationService, ValidationService>();
 
@@ -36,6 +38,8 @@ namespace PseudoRun.Desktop
             services.AddTransient<PracticeProblemsViewModel>();
             services.AddTransient<TutorialViewModel>();
             services.AddTransient<ExamModeViewModel>();
+            services.AddTransient<ExamplesViewModel>();
+            services.AddTransient<SyntaxReferenceViewModel>();
 
             // Windows
             services.AddTransient<MainWindow>();

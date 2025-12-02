@@ -1,0 +1,95 @@
+<UserControl x:Class="PseudoRun.Desktop.Views.Controls.DebugControls"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <StackPanel Orientation="Horizontal"
+                Margin="10,0,0,0"
+                Visibility="{Binding IsDebugging, Converter={StaticResource BoolToVisibilityConverter}}">
+
+        <Border Background="{StaticResource SurfaceBrush}"
+                BorderBrush="{StaticResource BorderBrush}"
+                BorderThickness="1"
+                CornerRadius="3"
+                Padding="8,4"
+                Margin="0,2">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="🐛 Debug Mode"
+                           FontWeight="Bold"
+                           FontSize="12"
+                           VerticalAlignment="Center"
+                           Margin="0,0,10,0"/>
+
+                <Button Content="▶ Continue"
+                        Command="{Binding ContinueCommand}"
+                        ToolTip="Continue execution (F5)"
+                        Padding="8,4"
+                        Margin="0,0,5,0"
+                        IsEnabled="{Binding IsPaused}">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+                            <Setter Property="Background" Value="{StaticResource SuccessBrush}"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                        </Style>
+                    </Button.Style>
+                </Button>
+
+                <Button Content="⏭ Step Over"
+                        Command="{Binding StepOverCommand}"
+                        ToolTip="Execute current line and pause (F10)"
+                        Padding="8,4"
+                        Margin="0,0,5,0"
+                        IsEnabled="{Binding IsPaused}">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+                            <Setter Property="Background" Value="{StaticResource PrimaryBrush}"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                        </Style>
+                    </Button.Style>
+                </Button>
+
+                <Button Content="⏹ Stop"
+                        Command="{Binding StopDebugCommand}"
+                        ToolTip="Stop debugging (Shift+F5)"
+                        Padding="8,4"
+                        Margin="0,0,0,0">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+                            <Setter Property="Background" Value="{StaticResource ErrorBrush}"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                        </Style>
+                    </Button.Style>
+                </Button>
+
+                <Separator Margin="10,0" Width="1"/>
+
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <TextBlock Text="Current Line: "
+                               FontSize="11"
+                               Foreground="{StaticResource SecondaryTextBrush}"/>
+                    <TextBlock Text="{Binding CurrentLine}"
+                               FontSize="11"
+                               FontWeight="Bold"
+                               Foreground="{StaticResource PrimaryBrush}"/>
+                </StackPanel>
+
+                <Rectangle Width="10" Fill="Transparent"/>
+
+                <Border Background="{StaticResource WarningBrush}"
+                        CornerRadius="10"
+                        Padding="8,2"
+                        Visibility="{Binding IsPaused, Converter={StaticResource BoolToVisibilityConverter}}">
+                    <TextBlock Text="⏸ PAUSED"
+                               FontSize="10"
+                               FontWeight="Bold"
+                               Foreground="White"/>
+                </Border>
+            </StackPanel>
+        </Border>
+    </StackPanel>
+</UserControl>
