@@ -66,28 +66,28 @@ namespace PseudoRun.Desktop.Utilities
         {
             var upper = line.ToUpper();
 
-            // Using = instead of <-
+            // Using = instead of <--
             if (Regex.IsMatch(line, @"^\s*\w+\s*=\s*") && !upper.Contains("IF") && !upper.Contains("WHILE"))
             {
                 report.Mistakes.Add(new Mistake
                 {
                     Line = lineNumber,
                     Type = "Assignment Operator",
-                    Message = "Using '=' for assignment instead of '<-'",
-                    Suggestion = "In IGCSE pseudocode, use '<-' for assignment. For example: x <- 5",
+                    Message = "Using '=' for assignment instead of '<--'",
+                    Suggestion = "In IGCSE pseudocode, use '<--' for assignment. For example: x <-- 5",
                     Severity = "Error"
                 });
             }
 
-            // Using := instead of <-
+            // Using := instead of <--
             if (line.Contains(":="))
             {
                 report.Mistakes.Add(new Mistake
                 {
                     Line = lineNumber,
                     Type = "Assignment Operator",
-                    Message = "Using ':=' for assignment (Pascal style) instead of '<-'",
-                    Suggestion = "IGCSE pseudocode uses '<-' for assignment, not ':='",
+                    Message = "Using ':=' for assignment (Pascal style) instead of '<--'",
+                    Suggestion = "IGCSE pseudocode uses '<--' for assignment, not ':='",
                     Severity = "Error"
                 });
             }
@@ -212,7 +212,7 @@ namespace PseudoRun.Desktop.Utilities
                     Line = lineNumber,
                     Type = "Loop Syntax",
                     Message = "FOR loop missing 'TO' keyword",
-                    Suggestion = "Use: FOR counter <- 1 TO 10",
+                    Suggestion = "Use: FOR counter <-- 1 TO 10",
                     Severity = "Error"
                 });
             }

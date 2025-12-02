@@ -22,7 +22,7 @@
     "description": "Basic FOR loop example counting from 1 to 10",
     "category": "control-structures",
     "difficulty": "beginner",
-    "code": "// Count from 1 to 10\nDECLARE counter : INTEGER\n\nFOR counter <- 1 TO 10\n    OUTPUT counter\nNEXT counter\n\nOUTPUT \"Done!\"",
+    "code": "// Count from 1 to 10\nDECLARE counter : INTEGER\n\nFOR counter <-- 1 TO 10\n    OUTPUT counter\nNEXT counter\n\nOUTPUT \"Done!\"",
     "tags": ["IGCSE", "loops", "for-loop", "beginner"]
   },
   {
@@ -30,7 +30,7 @@
     "description": "WHILE loop example calculating sum of numbers",
     "category": "control-structures",
     "difficulty": "beginner",
-    "code": "// Sum of numbers\nDECLARE total : INTEGER\nDECLARE number : INTEGER\n\ntotal <- 0\nnumber <- 1\n\nWHILE number <= 10 DO\n    total <- total + number\n    number <- number + 1\nENDWHILE\n\nOUTPUT \"Sum: \", total",
+    "code": "// Sum of numbers\nDECLARE total : INTEGER\nDECLARE number : INTEGER\n\ntotal <-- 0\nnumber <-- 1\n\nWHILE number <= 10 DO\n    total <-- total + number\n    number <-- number + 1\nENDWHILE\n\nOUTPUT \"Sum: \", total",
     "tags": ["IGCSE", "loops", "while-loop", "beginner"]
   },
   {
@@ -38,7 +38,7 @@
     "description": "Array manipulation with input and calculations",
     "category": "arrays",
     "difficulty": "beginner",
-    "code": "// Array manipulation\nDECLARE numbers : ARRAY[1:5] OF INTEGER\nDECLARE i : INTEGER\nDECLARE sum : INTEGER\n\n// Fill array\nFOR i <- 1 TO 5\n    OUTPUT \"Enter number \", i, \": \"\n    INPUT numbers[i]\nNEXT i\n\n// Calculate sum\nsum <- 0\nFOR i <- 1 TO 5\n    sum <- sum + numbers[i]\nNEXT i\n\nOUTPUT \"Sum: \", sum\nOUTPUT \"Average: \", sum / 5",
+    "code": "// Array manipulation\nDECLARE numbers : ARRAY[1:5] OF INTEGER\nDECLARE i : INTEGER\nDECLARE sum : INTEGER\n\n// Fill array\nFOR i <-- 1 TO 5\n    OUTPUT \"Enter number \", i, \": \"\n    INPUT numbers[i]\nNEXT i\n\n// Calculate sum\nsum <-- 0\nFOR i <-- 1 TO 5\n    sum <-- sum + numbers[i]\nNEXT i\n\nOUTPUT \"Sum: \", sum\nOUTPUT \"Average: \", sum / 5",
     "tags": ["IGCSE", "arrays", "beginner"]
   },
   {
@@ -46,7 +46,7 @@
     "description": "Multiple functions with return values demonstrating factorial and prime number checking",
     "category": "functions",
     "difficulty": "intermediate",
-    "code": "// Multiple functions with return values\nDECLARE Num, Result : INTEGER\n\nFUNCTION Factorial(N : INTEGER) RETURNS INTEGER\n    DECLARE Fact, Counter : INTEGER\n    Fact <- 1\n    FOR Counter <- 1 TO N\n        Fact <- Fact * Counter\n    NEXT Counter\n    RETURN Fact\nENDFUNCTION\n\nFUNCTION IsPrime(Number : INTEGER) RETURNS BOOLEAN\n    DECLARE Divisor : INTEGER\n    IF Number < 2 THEN\n        RETURN FALSE\n    ENDIF\n    FOR Divisor <- 2 TO Number - 1\n        IF Number MOD Divisor = 0 THEN\n            RETURN FALSE\n        ENDIF\n    NEXT Divisor\n    RETURN TRUE\nENDFUNCTION\n\nNum <- 5\nResult <- Factorial(Num)\nOUTPUT \"Factorial of \", Num, \" is \", Result\n\nFOR Num <- 1 TO 20\n    IF IsPrime(Num) THEN\n        OUTPUT Num, \" is prime\"\n    ENDIF\nNEXT Num",
+    "code": "// Multiple functions with return values\nDECLARE Num, Result : INTEGER\n\nFUNCTION Factorial(N : INTEGER) RETURNS INTEGER\n    DECLARE Fact, Counter : INTEGER\n    Fact <-- 1\n    FOR Counter <-- 1 TO N\n        Fact <-- Fact * Counter\n    NEXT Counter\n    RETURN Fact\nENDFUNCTION\n\nFUNCTION IsPrime(Number : INTEGER) RETURNS BOOLEAN\n    DECLARE Divisor : INTEGER\n    IF Number < 2 THEN\n        RETURN FALSE\n    ENDIF\n    FOR Divisor <-- 2 TO Number - 1\n        IF Number MOD Divisor = 0 THEN\n            RETURN FALSE\n        ENDIF\n    NEXT Divisor\n    RETURN TRUE\nENDFUNCTION\n\nNum <-- 5\nResult <-- Factorial(Num)\nOUTPUT \"Factorial of \", Num, \" is \", Result\n\nFOR Num <-- 1 TO 20\n    IF IsPrime(Num) THEN\n        OUTPUT Num, \" is prime\"\n    ENDIF\nNEXT Num",
     "tags": ["IGCSE", "functions", "intermediate", "algorithms"]
   },
   {
@@ -54,7 +54,7 @@
     "description": "Bubble sort implementation using procedures with BYREF parameters",
     "category": "algorithms",
     "difficulty": "intermediate",
-    "code": "// Bubble Sort with procedure\nDECLARE Arr : ARRAY[1:8] OF INTEGER\nDECLARE i : INTEGER\n\nPROCEDURE BubbleSort(BYREF Data : ARRAY OF INTEGER, Size : INTEGER)\n    DECLARE Pass, Index, Swap : INTEGER\n    FOR Pass <- 1 TO Size - 1\n        FOR Index <- 1 TO Size - Pass\n            IF Data[Index] > Data[Index + 1] THEN\n                Swap <- Data[Index]\n                Data[Index] <- Data[Index + 1]\n                Data[Index + 1] <- Swap\n            ENDIF\n        NEXT Index\n    NEXT Pass\nENDPROCEDURE\n\nArr[1] <- 64\nArr[2] <- 34\nArr[3] <- 25\nArr[4] <- 12\nArr[5] <- 22\nArr[6] <- 11\nArr[7] <- 90\nArr[8] <- 88\n\nOUTPUT \"Before sorting:\"\nFOR i <- 1 TO 8\n    OUTPUT Arr[i]\nNEXT i\n\nCALL BubbleSort(Arr, 8)\n\nOUTPUT \"After sorting:\"\nFOR i <- 1 TO 8\n    OUTPUT Arr[i]\nNEXT i",
+    "code": "// Bubble Sort with procedure\nDECLARE Arr : ARRAY[1:8] OF INTEGER\nDECLARE i : INTEGER\n\nPROCEDURE BubbleSort(BYREF Data : ARRAY OF INTEGER, Size : INTEGER)\n    DECLARE Pass, Index, Swap : INTEGER\n    FOR Pass <-- 1 TO Size - 1\n        FOR Index <-- 1 TO Size - Pass\n            IF Data[Index] > Data[Index + 1] THEN\n                Swap <-- Data[Index]\n                Data[Index] <-- Data[Index + 1]\n                Data[Index + 1] <-- Swap\n            ENDIF\n        NEXT Index\n    NEXT Pass\nENDPROCEDURE\n\nArr[1] <-- 64\nArr[2] <-- 34\nArr[3] <-- 25\nArr[4] <-- 12\nArr[5] <-- 22\nArr[6] <-- 11\nArr[7] <-- 90\nArr[8] <-- 88\n\nOUTPUT \"Before sorting:\"\nFOR i <-- 1 TO 8\n    OUTPUT Arr[i]\nNEXT i\n\nCALL BubbleSort(Arr, 8)\n\nOUTPUT \"After sorting:\"\nFOR i <-- 1 TO 8\n    OUTPUT Arr[i]\nNEXT i",
     "tags": ["IGCSE", "algorithms", "sorting", "procedures", "intermediate"]
   },
   {
@@ -62,7 +62,7 @@
     "description": "Advanced string operations with LENGTH, SUBSTRING, UCASE, LCASE functions",
     "category": "basics",
     "difficulty": "intermediate",
-    "code": "// Advanced string operations\nDECLARE Text, Word, Result : STRING\nDECLARE Position, Len, Vowels, i : INTEGER\nDECLARE CurrentChar : CHAR\n\nText <- \"IGCSE Computer Science\"\nOUTPUT \"Original text: \", Text\n\nLen <- LENGTH(Text)\nOUTPUT \"Length: \", Len\n\nWord <- SUBSTRING(Text, 1, 5)\nOUTPUT \"First 5 characters: \", Word\n\nPosition <- 7\nWord <- SUBSTRING(Text, Position, 8)\nOUTPUT \"Word at position 7: \", Word\n\nResult <- UCASE(Text)\nOUTPUT \"Uppercase: \", Result\n\nResult <- LCASE(Text)\nOUTPUT \"Lowercase: \", Result\n\n// Count vowels\nVowels <- 0\nFOR i <- 1 TO LENGTH(Text)\n    CurrentChar <- SUBSTRING(Text, i, 1)\n    IF CurrentChar = \"A\" OR CurrentChar = \"E\" OR CurrentChar = \"I\" OR CurrentChar = \"O\" OR CurrentChar = \"U\" THEN\n        Vowels <- Vowels + 1\n    ENDIF\n    IF CurrentChar = \"a\" OR CurrentChar = \"e\" OR CurrentChar = \"i\" OR CurrentChar = \"o\" OR CurrentChar = \"u\" THEN\n        Vowels <- Vowels + 1\n    ENDIF\nNEXT i\nOUTPUT \"Number of vowels: \", Vowels",
+    "code": "// Advanced string operations\nDECLARE Text, Word, Result : STRING\nDECLARE Position, Len, Vowels, i : INTEGER\nDECLARE CurrentChar : CHAR\n\nText <-- \"IGCSE Computer Science\"\nOUTPUT \"Original text: \", Text\n\nLen <-- LENGTH(Text)\nOUTPUT \"Length: \", Len\n\nWord <-- SUBSTRING(Text, 1, 5)\nOUTPUT \"First 5 characters: \", Word\n\nPosition <-- 7\nWord <-- SUBSTRING(Text, Position, 8)\nOUTPUT \"Word at position 7: \", Word\n\nResult <-- UCASE(Text)\nOUTPUT \"Uppercase: \", Result\n\nResult <-- LCASE(Text)\nOUTPUT \"Lowercase: \", Result\n\n// Count vowels\nVowels <-- 0\nFOR i <-- 1 TO LENGTH(Text)\n    CurrentChar <-- SUBSTRING(Text, i, 1)\n    IF CurrentChar = \"A\" OR CurrentChar = \"E\" OR CurrentChar = \"I\" OR CurrentChar = \"O\" OR CurrentChar = \"U\" THEN\n        Vowels <-- Vowels + 1\n    ENDIF\n    IF CurrentChar = \"a\" OR CurrentChar = \"e\" OR CurrentChar = \"i\" OR CurrentChar = \"o\" OR CurrentChar = \"u\" THEN\n        Vowels <-- Vowels + 1\n    ENDIF\nNEXT i\nOUTPUT \"Number of vowels: \", Vowels",
     "tags": ["IGCSE", "strings", "intermediate"]
   },
   {
@@ -70,7 +70,7 @@
     "description": "Two-dimensional arrays with row and diagonal sum calculations",
     "category": "arrays",
     "difficulty": "intermediate",
-    "code": "// 2D Array with row and diagonal sums\nDECLARE Matrix : ARRAY[1:3, 1:3] OF INTEGER\nDECLARE Row, Col, Sum, Diagonal : INTEGER\n\n// Initialize 2D array\nMatrix[1,1] <- 1\nMatrix[1,2] <- 2\nMatrix[1,3] <- 3\nMatrix[2,1] <- 4\nMatrix[2,2] <- 5\nMatrix[2,3] <- 6\nMatrix[3,1] <- 7\nMatrix[3,2] <- 8\nMatrix[3,3] <- 9\n\nOUTPUT \"Matrix contents:\"\nFOR Row <- 1 TO 3\n    FOR Col <- 1 TO 3\n        OUTPUT Matrix[Row, Col], \" \"\n    NEXT Col\n    OUTPUT \"\"\nNEXT Row\n\n// Calculate row sums\nFOR Row <- 1 TO 3\n    Sum <- 0\n    FOR Col <- 1 TO 3\n        Sum <- Sum + Matrix[Row, Col]\n    NEXT Col\n    OUTPUT \"Sum of row \", Row, \" is \", Sum\nNEXT Row\n\n// Calculate diagonal sum\nDiagonal <- 0\nFOR Row <- 1 TO 3\n    Diagonal <- Diagonal + Matrix[Row, Row]\nNEXT Row\nOUTPUT \"Diagonal sum: \", Diagonal",
+    "code": "// 2D Array with row and diagonal sums\nDECLARE Matrix : ARRAY[1:3, 1:3] OF INTEGER\nDECLARE Row, Col, Sum, Diagonal : INTEGER\n\n// Initialize 2D array\nMatrix[1,1] <-- 1\nMatrix[1,2] <-- 2\nMatrix[1,3] <-- 3\nMatrix[2,1] <-- 4\nMatrix[2,2] <-- 5\nMatrix[2,3] <-- 6\nMatrix[3,1] <-- 7\nMatrix[3,2] <-- 8\nMatrix[3,3] <-- 9\n\nOUTPUT \"Matrix contents:\"\nFOR Row <-- 1 TO 3\n    FOR Col <-- 1 TO 3\n        OUTPUT Matrix[Row, Col], \" \"\n    NEXT Col\n    OUTPUT \"\"\nNEXT Row\n\n// Calculate row sums\nFOR Row <-- 1 TO 3\n    Sum <-- 0\n    FOR Col <-- 1 TO 3\n        Sum <-- Sum + Matrix[Row, Col]\n    NEXT Col\n    OUTPUT \"Sum of row \", Row, \" is \", Sum\nNEXT Row\n\n// Calculate diagonal sum\nDiagonal <-- 0\nFOR Row <-- 1 TO 3\n    Diagonal <-- Diagonal + Matrix[Row, Row]\nNEXT Row\nOUTPUT \"Diagonal sum: \", Diagonal",
     "tags": ["IGCSE", "arrays", "2d-arrays", "intermediate"]
   },
   {
@@ -78,7 +78,7 @@
     "description": "Linear search algorithm with string array",
     "category": "algorithms",
     "difficulty": "beginner",
-    "code": "// Linear search with string array\nDECLARE Names : ARRAY[1:5] OF STRING\nDECLARE SearchName : STRING\nDECLARE Index : INTEGER\nDECLARE FoundAt : INTEGER\n\nNames[1] <- \"Ahmed\"\nNames[2] <- \"Fatima\"\nNames[3] <- \"Hassan\"\nNames[4] <- \"Zainab\"\nNames[5] <- \"Omar\"\n\nSearchName <- \"Hassan\"\nFoundAt <- -1\n\nFOR Index <- 1 TO 5\n    IF Names[Index] = SearchName THEN\n        FoundAt <- Index\n    ENDIF\nNEXT Index\n\nIF FoundAt <> -1 THEN\n    OUTPUT SearchName, \" found at position \", FoundAt\nELSE\n    OUTPUT SearchName, \" not found\"\nENDIF",
+    "code": "// Linear search with string array\nDECLARE Names : ARRAY[1:5] OF STRING\nDECLARE SearchName : STRING\nDECLARE Index : INTEGER\nDECLARE FoundAt : INTEGER\n\nNames[1] <-- \"Ahmed\"\nNames[2] <-- \"Fatima\"\nNames[3] <-- \"Hassan\"\nNames[4] <-- \"Zainab\"\nNames[5] <-- \"Omar\"\n\nSearchName <-- \"Hassan\"\nFoundAt <-- -1\n\nFOR Index <-- 1 TO 5\n    IF Names[Index] = SearchName THEN\n        FoundAt <-- Index\n    ENDIF\nNEXT Index\n\nIF FoundAt <> -1 THEN\n    OUTPUT SearchName, \" found at position \", FoundAt\nELSE\n    OUTPUT SearchName, \" not found\"\nENDIF",
     "tags": ["IGCSE", "algorithms", "searching", "beginner"]
   },
   {
@@ -86,7 +86,7 @@
     "description": "Binary search algorithm on sorted array",
     "category": "algorithms",
     "difficulty": "advanced",
-    "code": "// Binary Search algorithm\nDECLARE Numbers : ARRAY[1:10] OF INTEGER\nDECLARE SearchValue, Low, High, Mid : INTEGER\nDECLARE Found : BOOLEAN\n\n// Initialize sorted array\nNumbers[1] <- 5\nNumbers[2] <- 12\nNumbers[3] <- 18\nNumbers[4] <- 23\nNumbers[5] <- 31\nNumbers[6] <- 45\nNumbers[7] <- 56\nNumbers[8] <- 67\nNumbers[9] <- 78\nNumbers[10] <- 89\n\nSearchValue <- 45\nLow <- 1\nHigh <- 10\nFound <- FALSE\n\nWHILE Low <= High AND Found = FALSE DO\n    Mid <- (Low + High) DIV 2\n    IF Numbers[Mid] = SearchValue THEN\n        Found <- TRUE\n        OUTPUT \"Found at position: \", Mid\n    ELSE\n        IF Numbers[Mid] < SearchValue THEN\n            Low <- Mid + 1\n        ELSE\n            High <- Mid - 1\n        ENDIF\n    ENDIF\nENDWHILE\n\nIF Found = FALSE THEN\n    OUTPUT \"Value not found\"\nENDIF",
+    "code": "// Binary Search algorithm\nDECLARE Numbers : ARRAY[1:10] OF INTEGER\nDECLARE SearchValue, Low, High, Mid : INTEGER\nDECLARE Found : BOOLEAN\n\n// Initialize sorted array\nNumbers[1] <-- 5\nNumbers[2] <-- 12\nNumbers[3] <-- 18\nNumbers[4] <-- 23\nNumbers[5] <-- 31\nNumbers[6] <-- 45\nNumbers[7] <-- 56\nNumbers[8] <-- 67\nNumbers[9] <-- 78\nNumbers[10] <-- 89\n\nSearchValue <-- 45\nLow <-- 1\nHigh <-- 10\nFound <-- FALSE\n\nWHILE Low <= High AND Found = FALSE DO\n    Mid <-- (Low + High) DIV 2\n    IF Numbers[Mid] = SearchValue THEN\n        Found <-- TRUE\n        OUTPUT \"Found at position: \", Mid\n    ELSE\n        IF Numbers[Mid] < SearchValue THEN\n            Low <-- Mid + 1\n        ELSE\n            High <-- Mid - 1\n        ENDIF\n    ENDIF\nENDWHILE\n\nIF Found = FALSE THEN\n    OUTPUT \"Value not found\"\nENDIF",
     "tags": ["IGCSE", "algorithms", "searching", "binary-search", "advanced"]
   },
   {
@@ -94,7 +94,7 @@
     "description": "Selection sort algorithm implementation",
     "category": "algorithms",
     "difficulty": "intermediate",
-    "code": "// Selection Sort algorithm\nDECLARE Numbers : ARRAY[1:6] OF INTEGER\nDECLARE i, j, MinIndex, Temp : INTEGER\n\nNumbers[1] <- 64\nNumbers[2] <- 25\nNumbers[3] <- 12\nNumbers[4] <- 22\nNumbers[5] <- 11\nNumbers[6] <- 90\n\nOUTPUT \"Before sorting:\"\nFOR i <- 1 TO 6\n    OUTPUT Numbers[i]\nNEXT i\n\n// Selection Sort\nFOR i <- 1 TO 5\n    MinIndex <- i\n    FOR j <- i + 1 TO 6\n        IF Numbers[j] < Numbers[MinIndex] THEN\n            MinIndex <- j\n        ENDIF\n    NEXT j\n    IF MinIndex <> i THEN\n        Temp <- Numbers[i]\n        Numbers[i] <- Numbers[MinIndex]\n        Numbers[MinIndex] <- Temp\n    ENDIF\nNEXT i\n\nOUTPUT \"After sorting:\"\nFOR i <- 1 TO 6\n    OUTPUT Numbers[i]\nNEXT i",
+    "code": "// Selection Sort algorithm\nDECLARE Numbers : ARRAY[1:6] OF INTEGER\nDECLARE i, j, MinIndex, Temp : INTEGER\n\nNumbers[1] <-- 64\nNumbers[2] <-- 25\nNumbers[3] <-- 12\nNumbers[4] <-- 22\nNumbers[5] <-- 11\nNumbers[6] <-- 90\n\nOUTPUT \"Before sorting:\"\nFOR i <-- 1 TO 6\n    OUTPUT Numbers[i]\nNEXT i\n\n// Selection Sort\nFOR i <-- 1 TO 5\n    MinIndex <-- i\n    FOR j <-- i + 1 TO 6\n        IF Numbers[j] < Numbers[MinIndex] THEN\n            MinIndex <-- j\n        ENDIF\n    NEXT j\n    IF MinIndex <> i THEN\n        Temp <-- Numbers[i]\n        Numbers[i] <-- Numbers[MinIndex]\n        Numbers[MinIndex] <-- Temp\n    ENDIF\nNEXT i\n\nOUTPUT \"After sorting:\"\nFOR i <-- 1 TO 6\n    OUTPUT Numbers[i]\nNEXT i",
     "tags": ["IGCSE", "algorithms", "sorting", "selection-sort", "intermediate"]
   },
   {
@@ -102,7 +102,7 @@
     "description": "CASE statement with range support for grade calculation",
     "category": "control-structures",
     "difficulty": "intermediate",
-    "code": "// CASE statement with range support\nDECLARE Grade : CHAR\nDECLARE Mark : INTEGER\n\nMark <- 75\n\nCASE OF Mark\n    50 TO 59 : Grade <- 'D'\n    60 TO 69 : Grade <- 'C'\n    70 TO 79 : Grade <- 'B'\n    80 TO 100 : Grade <- 'A'\n    OTHERWISE : Grade <- 'F'\nENDCASE\n\nOUTPUT \"Mark: \", Mark, \" Grade: \", Grade",
+    "code": "// CASE statement with range support\nDECLARE Grade : CHAR\nDECLARE Mark : INTEGER\n\nMark <-- 75\n\nCASE OF Mark\n    50 TO 59 : Grade <-- 'D'\n    60 TO 69 : Grade <-- 'C'\n    70 TO 79 : Grade <-- 'B'\n    80 TO 100 : Grade <-- 'A'\n    OTHERWISE : Grade <-- 'F'\nENDCASE\n\nOUTPUT \"Mark: \", Mark, \" Grade: \", Grade",
     "tags": ["IGCSE", "control-structures", "case-statement", "intermediate"]
   },
   {
@@ -110,7 +110,7 @@
     "description": "REPEAT UNTIL loop with counter and accumulator",
     "category": "control-structures",
     "difficulty": "beginner",
-    "code": "// REPEAT UNTIL with counter\nDECLARE Counter : INTEGER\nDECLARE Total : INTEGER\n\nCounter <- 1\nTotal <- 0\n\nREPEAT\n    Total <- Total + Counter\n    OUTPUT \"Counter: \", Counter, \" Total: \", Total\n    Counter <- Counter + 1\nUNTIL Counter > 5\n\nOUTPUT \"Final total: \", Total",
+    "code": "// REPEAT UNTIL with counter\nDECLARE Counter : INTEGER\nDECLARE Total : INTEGER\n\nCounter <-- 1\nTotal <-- 0\n\nREPEAT\n    Total <-- Total + Counter\n    OUTPUT \"Counter: \", Counter, \" Total: \", Total\n    Counter <-- Counter + 1\nUNTIL Counter > 5\n\nOUTPUT \"Final total: \", Total",
     "tags": ["IGCSE", "loops", "repeat-until", "beginner"]
   },
   {
@@ -118,7 +118,7 @@
     "description": "Pass by reference parameter example with swap procedure",
     "category": "functions",
     "difficulty": "intermediate",
-    "code": "// Pass by reference example\nPROCEDURE Swap(BYREF a : INTEGER, BYREF b : INTEGER)\n    DECLARE temp : INTEGER\n    temp <- a\n    a <- b\n    b <- temp\nENDPROCEDURE\n\n// Main program\nDECLARE x, y : INTEGER\n\nx <- 10\ny <- 20\n\nOUTPUT \"Before swap:\"\nOUTPUT \"x = \", x\nOUTPUT \"y = \", y\n\nCALL Swap(x, y)\n\nOUTPUT \"After swap:\"\nOUTPUT \"x = \", x\nOUTPUT \"y = \", y",
+    "code": "// Pass by reference example\nPROCEDURE Swap(BYREF a : INTEGER, BYREF b : INTEGER)\n    DECLARE temp : INTEGER\n    temp <-- a\n    a <-- b\n    b <-- temp\nENDPROCEDURE\n\n// Main program\nDECLARE x, y : INTEGER\n\nx <-- 10\ny <-- 20\n\nOUTPUT \"Before swap:\"\nOUTPUT \"x = \", x\nOUTPUT \"y = \", y\n\nCALL Swap(x, y)\n\nOUTPUT \"After swap:\"\nOUTPUT \"x = \", x\nOUTPUT \"y = \", y",
     "tags": ["IGCSE", "procedures", "parameters", "byref", "intermediate"]
   },
   {
@@ -126,7 +126,7 @@
     "description": "Pattern generation using nested loops (multiplication table and triangle)",
     "category": "control-structures",
     "difficulty": "intermediate",
-    "code": "// Pattern generation\nDECLARE OuterLoop, InnerLoop, Number : INTEGER\n\nOUTPUT \"Multiplication table:\"\nFOR OuterLoop <- 1 TO 5\n    FOR InnerLoop <- 1 TO 5\n        Number <- OuterLoop * InnerLoop\n        OUTPUT Number, \" \"\n    NEXT InnerLoop\n    OUTPUT \"\"\nNEXT OuterLoop\n\nOUTPUT \"Triangle pattern:\"\nFOR OuterLoop <- 1 TO 5\n    FOR InnerLoop <- 1 TO OuterLoop\n        OUTPUT \"*\"\n    NEXT InnerLoop\n    OUTPUT \"\"\nNEXT OuterLoop",
+    "code": "// Pattern generation\nDECLARE OuterLoop, InnerLoop, Number : INTEGER\n\nOUTPUT \"Multiplication table:\"\nFOR OuterLoop <-- 1 TO 5\n    FOR InnerLoop <-- 1 TO 5\n        Number <-- OuterLoop * InnerLoop\n        OUTPUT Number, \" \"\n    NEXT InnerLoop\n    OUTPUT \"\"\nNEXT OuterLoop\n\nOUTPUT \"Triangle pattern:\"\nFOR OuterLoop <-- 1 TO 5\n    FOR InnerLoop <-- 1 TO OuterLoop\n        OUTPUT \"*\"\n    NEXT InnerLoop\n    OUTPUT \"\"\nNEXT OuterLoop",
     "tags": ["IGCSE", "loops", "nested-loops", "patterns", "intermediate"]
   },
   {
@@ -134,7 +134,7 @@
     "description": "Parallel arrays simulating records with student data",
     "category": "arrays",
     "difficulty": "intermediate",
-    "code": "// Parallel arrays (simulating records)\nDECLARE StudentIDs : ARRAY[1:3] OF INTEGER\nDECLARE StudentNames : ARRAY[1:3] OF STRING\nDECLARE StudentScores : ARRAY[1:3] OF INTEGER\nDECLARE Highest, HighestIndex, Idx : INTEGER\n\nStudentIDs[1] <- 101\nStudentNames[1] <- \"Ali\"\nStudentScores[1] <- 88\n\nStudentIDs[2] <- 102\nStudentNames[2] <- \"Sara\"\nStudentScores[2] <- 95\n\nStudentIDs[3] <- 103\nStudentNames[3] <- \"Bilal\"\nStudentScores[3] <- 82\n\nOUTPUT \"Student Records:\"\nFOR Idx <- 1 TO 3\n    OUTPUT \"ID: \", StudentIDs[Idx], \" Name: \", StudentNames[Idx], \" Score: \", StudentScores[Idx]\nNEXT Idx\n\nHighest <- StudentScores[1]\nHighestIndex <- 1\nFOR Idx <- 2 TO 3\n    IF StudentScores[Idx] > Highest THEN\n        Highest <- StudentScores[Idx]\n        HighestIndex <- Idx\n    ENDIF\nNEXT Idx\n\nOUTPUT \"Top student: \", StudentNames[HighestIndex], \" with score \", Highest",
+    "code": "// Parallel arrays (simulating records)\nDECLARE StudentIDs : ARRAY[1:3] OF INTEGER\nDECLARE StudentNames : ARRAY[1:3] OF STRING\nDECLARE StudentScores : ARRAY[1:3] OF INTEGER\nDECLARE Highest, HighestIndex, Idx : INTEGER\n\nStudentIDs[1] <-- 101\nStudentNames[1] <-- \"Ali\"\nStudentScores[1] <-- 88\n\nStudentIDs[2] <-- 102\nStudentNames[2] <-- \"Sara\"\nStudentScores[2] <-- 95\n\nStudentIDs[3] <-- 103\nStudentNames[3] <-- \"Bilal\"\nStudentScores[3] <-- 82\n\nOUTPUT \"Student Records:\"\nFOR Idx <-- 1 TO 3\n    OUTPUT \"ID: \", StudentIDs[Idx], \" Name: \", StudentNames[Idx], \" Score: \", StudentScores[Idx]\nNEXT Idx\n\nHighest <-- StudentScores[1]\nHighestIndex <-- 1\nFOR Idx <-- 2 TO 3\n    IF StudentScores[Idx] > Highest THEN\n        Highest <-- StudentScores[Idx]\n        HighestIndex <-- Idx\n    ENDIF\nNEXT Idx\n\nOUTPUT \"Top student: \", StudentNames[HighestIndex], \" with score \", Highest",
     "tags": ["IGCSE", "arrays", "parallel-arrays", "intermediate"]
   },
   {
@@ -142,7 +142,7 @@
     "description": "Type conversion functions (INT, REAL, STRING, ROUND)",
     "category": "basics",
     "difficulty": "beginner",
-    "code": "// Type conversion functions\nDECLARE IntNum : INTEGER\nDECLARE RealNum : REAL\nDECLARE StrNum : STRING\n\nRealNum <- 3.7\nIntNum <- INT(RealNum)\nOUTPUT \"INT(3.7) = \", IntNum\n\nIntNum <- 42\nRealNum <- REAL(IntNum)\nOUTPUT \"REAL(42) = \", RealNum\n\nIntNum <- 123\nStrNum <- STRING(IntNum)\nOUTPUT \"STRING(123) = \", StrNum\n\nRealNum <- 3.14159\nOUTPUT \"Original: \", RealNum\nOUTPUT \"ROUND(3.14159, 2) = \", ROUND(RealNum, 2)",
+    "code": "// Type conversion functions\nDECLARE IntNum : INTEGER\nDECLARE RealNum : REAL\nDECLARE StrNum : STRING\n\nRealNum <-- 3.7\nIntNum <-- INT(RealNum)\nOUTPUT \"INT(3.7) = \", IntNum\n\nIntNum <-- 42\nRealNum <-- REAL(IntNum)\nOUTPUT \"REAL(42) = \", RealNum\n\nIntNum <-- 123\nStrNum <-- STRING(IntNum)\nOUTPUT \"STRING(123) = \", StrNum\n\nRealNum <-- 3.14159\nOUTPUT \"Original: \", RealNum\nOUTPUT \"ROUND(3.14159, 2) = \", ROUND(RealNum, 2)",
     "tags": ["IGCSE", "type-conversion", "functions", "beginner"]
   },
   {
@@ -150,7 +150,7 @@
     "description": "String concatenation using the & operator",
     "category": "basics",
     "difficulty": "beginner",
-    "code": "// String concatenation\nDECLARE FirstName, LastName, FullName : STRING\nDECLARE Age : INTEGER\nDECLARE Message : STRING\n\nFirstName <- \"John\"\nLastName <- \"Smith\"\nAge <- 16\n\nFullName <- FirstName & \" \" & LastName\nOUTPUT \"Full name: \", FullName\n\nMessage <- \"Hello, \" & FullName & \"! You are \" & STRING(Age) & \" years old.\"\nOUTPUT Message",
+    "code": "// String concatenation\nDECLARE FirstName, LastName, FullName : STRING\nDECLARE Age : INTEGER\nDECLARE Message : STRING\n\nFirstName <-- \"John\"\nLastName <-- \"Smith\"\nAge <-- 16\n\nFullName <-- FirstName & \" \" & LastName\nOUTPUT \"Full name: \", FullName\n\nMessage <-- \"Hello, \" & FullName & \"! You are \" & STRING(Age) & \" years old.\"\nOUTPUT Message",
     "tags": ["IGCSE", "strings", "concatenation", "beginner"]
   },
   {
@@ -158,7 +158,7 @@
     "description": "Nested IF statements with complex conditional logic",
     "category": "control-structures",
     "difficulty": "intermediate",
-    "code": "// Nested IF with complex logic\nDECLARE Age : INTEGER\nDECLARE HasLicense : BOOLEAN\nDECLARE CanDrive : BOOLEAN\n\nAge <- 18\nHasLicense <- TRUE\n\nIF Age >= 18 THEN\n    IF HasLicense = TRUE THEN\n        CanDrive <- TRUE\n        OUTPUT \"You can drive\"\n    ELSE\n        CanDrive <- FALSE\n        OUTPUT \"You need a license\"\n    ENDIF\nELSE\n    CanDrive <- FALSE\n    OUTPUT \"You are too young to drive\"\nENDIF",
+    "code": "// Nested IF with complex logic\nDECLARE Age : INTEGER\nDECLARE HasLicense : BOOLEAN\nDECLARE CanDrive : BOOLEAN\n\nAge <-- 18\nHasLicense <-- TRUE\n\nIF Age >= 18 THEN\n    IF HasLicense = TRUE THEN\n        CanDrive <-- TRUE\n        OUTPUT \"You can drive\"\n    ELSE\n        CanDrive <-- FALSE\n        OUTPUT \"You need a license\"\n    ENDIF\nELSE\n    CanDrive <-- FALSE\n    OUTPUT \"You are too young to drive\"\nENDIF",
     "tags": ["IGCSE", "control-structures", "nested-if", "intermediate"]
   },
   {
@@ -166,7 +166,7 @@
     "description": "All mathematical operators (+, -, *, /, DIV, MOD)",
     "category": "basics",
     "difficulty": "beginner",
-    "code": "// All mathematical operators\nDECLARE a, b, Result : INTEGER\nDECLARE Division : REAL\n\na <- 17\nb <- 5\n\nResult <- a + b\nOUTPUT a, \" + \", b, \" = \", Result\n\nResult <- a - b\nOUTPUT a, \" - \", b, \" = \", Result\n\nResult <- a * b\nOUTPUT a, \" * \", b, \" = \", Result\n\nDivision <- a / b\nOUTPUT a, \" / \", b, \" = \", Division\n\nResult <- a DIV b\nOUTPUT a, \" DIV \", b, \" = \", Result\n\nResult <- a MOD b\nOUTPUT a, \" MOD \", b, \" = \", Result",
+    "code": "// All mathematical operators\nDECLARE a, b, Result : INTEGER\nDECLARE Division : REAL\n\na <-- 17\nb <-- 5\n\nResult <-- a + b\nOUTPUT a, \" + \", b, \" = \", Result\n\nResult <-- a - b\nOUTPUT a, \" - \", b, \" = \", Result\n\nResult <-- a * b\nOUTPUT a, \" * \", b, \" = \", Result\n\nDivision <-- a / b\nOUTPUT a, \" / \", b, \" = \", Division\n\nResult <-- a DIV b\nOUTPUT a, \" DIV \", b, \" = \", Result\n\nResult <-- a MOD b\nOUTPUT a, \" MOD \", b, \" = \", Result",
     "tags": ["IGCSE", "arithmetic", "operators", "beginner"]
   },
   {
@@ -174,7 +174,7 @@
     "description": "Read and display file contents line by line",
     "category": "files",
     "difficulty": "intermediate",
-    "code": "// Read and display file contents\nDECLARE FileName : STRING\nDECLARE Line : STRING\nDECLARE LineCount : INTEGER\n\nFileName <- \"data.txt\"\nLineCount <- 0\n\nOPENFILE FileName FOR READ\n\nWHILE NOT EOF(FileName) DO\n    READFILE FileName, Line\n    LineCount <- LineCount + 1\n    OUTPUT \"Line \", LineCount, \": \", Line\nENDWHILE\n\nCLOSEFILE FileName\n\nOUTPUT \"Total lines read: \", LineCount",
+    "code": "// Read and display file contents\nDECLARE FileName : STRING\nDECLARE Line : STRING\nDECLARE LineCount : INTEGER\n\nFileName <-- \"data.txt\"\nLineCount <-- 0\n\nOPENFILE FileName FOR READ\n\nWHILE NOT EOF(FileName) DO\n    READFILE FileName, Line\n    LineCount <-- LineCount + 1\n    OUTPUT \"Line \", LineCount, \": \", Line\nENDWHILE\n\nCLOSEFILE FileName\n\nOUTPUT \"Total lines read: \", LineCount",
     "tags": ["IGCSE", "files", "file-io", "reading", "intermediate"]
   },
   {
@@ -182,7 +182,7 @@
     "description": "Write student names to file",
     "category": "files",
     "difficulty": "intermediate",
-    "code": "// Write student names to file\nDECLARE OutputFile : STRING\nDECLARE StudentName : STRING\nDECLARE Count, i : INTEGER\n\nOutputFile <- \"students.txt\"\nCount <- 3\n\nOPENFILE OutputFile FOR WRITE\n\nFOR i <- 1 TO Count\n    OUTPUT \"Enter student name \", i, \": \"\n    INPUT StudentName\n    WRITEFILE OutputFile, StudentName\nNEXT i\n\nCLOSEFILE OutputFile\n\nOUTPUT \"Successfully wrote \", Count, \" names to \", OutputFile\nOUTPUT \"Use the Download button to save the file\"",
+    "code": "// Write student names to file\nDECLARE OutputFile : STRING\nDECLARE StudentName : STRING\nDECLARE Count, i : INTEGER\n\nOutputFile <-- \"students.txt\"\nCount <-- 3\n\nOPENFILE OutputFile FOR WRITE\n\nFOR i <-- 1 TO Count\n    OUTPUT \"Enter student name \", i, \": \"\n    INPUT StudentName\n    WRITEFILE OutputFile, StudentName\nNEXT i\n\nCLOSEFILE OutputFile\n\nOUTPUT \"Successfully wrote \", Count, \" names to \", OutputFile\nOUTPUT \"Use the Download button to save the file\"",
     "tags": ["IGCSE", "files", "file-io", "writing", "intermediate"]
   },
   {
@@ -190,7 +190,7 @@
     "description": "Read grades from file, calculate statistics, and write report",
     "category": "files",
     "difficulty": "advanced",
-    "code": "// Read grades, calculate statistics, write report\nDECLARE InputFile, OutputFile : STRING\nDECLARE Grade, Total, Count : INTEGER\nDECLARE Average : REAL\nDECLARE Highest, Lowest : INTEGER\n\nInputFile <- \"grades.txt\"\nOutputFile <- \"report.txt\"\nTotal <- 0\nCount <- 0\nHighest <- 0\nLowest <- 100\n\nOPENFILE InputFile FOR READ\n\n// Read all grades and calculate statistics\nWHILE NOT EOF(InputFile) DO\n    READFILE InputFile, Grade\n    Total <- Total + Grade\n    Count <- Count + 1\n    \n    IF Grade > Highest THEN\n        Highest <- Grade\n    ENDIF\n    \n    IF Grade < Lowest THEN\n        Lowest <- Grade\n    ENDIF\n    \n    OUTPUT \"Read grade: \", Grade\nENDWHILE\n\nCLOSEFILE InputFile\n\n// Calculate average\nIF Count > 0 THEN\n    Average <- REAL(Total) / REAL(Count)\nELSE\n    Average <- 0.0\nENDIF\n\n// Write report\nOPENFILE OutputFile FOR WRITE\n\nWRITEFILE OutputFile, \"Grade Statistics Report\"\nWRITEFILE OutputFile, \"=======================\"\nWRITEFILE OutputFile, \"Total grades: \" & STRING(Count)\nWRITEFILE OutputFile, \"Average: \" & STRING(ROUND(Average, 2))\nWRITEFILE OutputFile, \"Highest: \" & STRING(Highest)\nWRITEFILE OutputFile, \"Lowest: \" & STRING(Lowest)\n\nCLOSEFILE OutputFile\n\nOUTPUT \"\"\nOUTPUT \"Report generated successfully!\"\nOUTPUT \"Average grade: \", ROUND(Average, 2)\nOUTPUT \"Download report.txt to see full report\"",
+    "code": "// Read grades, calculate statistics, write report\nDECLARE InputFile, OutputFile : STRING\nDECLARE Grade, Total, Count : INTEGER\nDECLARE Average : REAL\nDECLARE Highest, Lowest : INTEGER\n\nInputFile <-- \"grades.txt\"\nOutputFile <-- \"report.txt\"\nTotal <-- 0\nCount <-- 0\nHighest <-- 0\nLowest <-- 100\n\nOPENFILE InputFile FOR READ\n\n// Read all grades and calculate statistics\nWHILE NOT EOF(InputFile) DO\n    READFILE InputFile, Grade\n    Total <-- Total + Grade\n    Count <-- Count + 1\n    \n    IF Grade > Highest THEN\n        Highest <-- Grade\n    ENDIF\n    \n    IF Grade < Lowest THEN\n        Lowest <-- Grade\n    ENDIF\n    \n    OUTPUT \"Read grade: \", Grade\nENDWHILE\n\nCLOSEFILE InputFile\n\n// Calculate average\nIF Count > 0 THEN\n    Average <-- REAL(Total) / REAL(Count)\nELSE\n    Average <-- 0.0\nENDIF\n\n// Write report\nOPENFILE OutputFile FOR WRITE\n\nWRITEFILE OutputFile, \"Grade Statistics Report\"\nWRITEFILE OutputFile, \"=======================\"\nWRITEFILE OutputFile, \"Total grades: \" & STRING(Count)\nWRITEFILE OutputFile, \"Average: \" & STRING(ROUND(Average, 2))\nWRITEFILE OutputFile, \"Highest: \" & STRING(Highest)\nWRITEFILE OutputFile, \"Lowest: \" & STRING(Lowest)\n\nCLOSEFILE OutputFile\n\nOUTPUT \"\"\nOUTPUT \"Report generated successfully!\"\nOUTPUT \"Average grade: \", ROUND(Average, 2)\nOUTPUT \"Download report.txt to see full report\"",
     "tags": ["IGCSE", "files", "file-io", "processing", "advanced"]
   },
   {
@@ -198,7 +198,7 @@
     "description": "Add entries to a log file using APPEND mode",
     "category": "files",
     "difficulty": "intermediate",
-    "code": "// Add entries to a log file\nDECLARE LogFile, Entry, Action : STRING\nDECLARE Timestamp, Counter : INTEGER\nDECLARE ContinueLogging : BOOLEAN\n\nLogFile <- \"activity.log\"\nCounter <- 1\nContinueLogging <- TRUE\n\nOPENFILE LogFile FOR APPEND\n\nWRITEFILE LogFile, \"=== New Session Started ===\"\n\nWHILE ContinueLogging = TRUE AND Counter <= 5 DO\n    OUTPUT \"Enter log entry \", Counter, \" (or 'DONE' to finish): \"\n    INPUT Entry\n    \n    IF Entry = \"DONE\" THEN\n        ContinueLogging <- FALSE\n    ELSE\n        Timestamp <- Counter * 1000\n        Action <- \"[\" & STRING(Timestamp) & \"] \" & Entry\n        WRITEFILE LogFile, Action\n        OUTPUT \"Logged: \", Action\n        Counter <- Counter + 1\n    ENDIF\nENDWHILE\n\nWRITEFILE LogFile, \"=== Session Ended ===\"\n\nCLOSEFILE LogFile\n\nOUTPUT \"\"\nOUTPUT \"Log file updated successfully\"\nOUTPUT \"Download activity.log to view all entries\"",
+    "code": "// Add entries to a log file\nDECLARE LogFile, Entry, Action : STRING\nDECLARE Timestamp, Counter : INTEGER\nDECLARE ContinueLogging : BOOLEAN\n\nLogFile <-- \"activity.log\"\nCounter <-- 1\nContinueLogging <-- TRUE\n\nOPENFILE LogFile FOR APPEND\n\nWRITEFILE LogFile, \"=== New Session Started ===\"\n\nWHILE ContinueLogging = TRUE AND Counter <= 5 DO\n    OUTPUT \"Enter log entry \", Counter, \" (or 'DONE' to finish): \"\n    INPUT Entry\n    \n    IF Entry = \"DONE\" THEN\n        ContinueLogging <-- FALSE\n    ELSE\n        Timestamp <-- Counter * 1000\n        Action <-- \"[\" & STRING(Timestamp) & \"] \" & Entry\n        WRITEFILE LogFile, Action\n        OUTPUT \"Logged: \", Action\n        Counter <-- Counter + 1\n    ENDIF\nENDWHILE\n\nWRITEFILE LogFile, \"=== Session Ended ===\"\n\nCLOSEFILE LogFile\n\nOUTPUT \"\"\nOUTPUT \"Log file updated successfully\"\nOUTPUT \"Download activity.log to view all entries\"",
     "tags": ["IGCSE", "files", "file-io", "append", "intermediate"]
   }
 ]

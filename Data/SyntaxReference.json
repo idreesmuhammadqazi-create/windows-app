@@ -10,14 +10,14 @@
       },
       {
         "title": "Assignment",
-        "syntax": "<identifier> <- <value>",
-        "example": "Age <- 16\nName <- \"Alice\"",
-        "description": "Assigns a value to a variable using the <- operator"
+        "syntax": "<identifier> <-- <value>",
+        "example": "Age <-- 16\nName <-- \"Alice\"",
+        "description": "Assigns a value to a variable using the <-- operator"
       },
       {
         "title": "Arrays",
         "syntax": "DECLARE <identifier> : ARRAY[<lower>:<upper>] OF <type>",
-        "example": "DECLARE Numbers : ARRAY[1:10] OF INTEGER\nNumbers[5] <- 42",
+        "example": "DECLARE Numbers : ARRAY[1:10] OF INTEGER\nNumbers[5] <-- 42",
         "description": "Declares an array with lower and upper bounds (1-indexed)"
       }
     ]
@@ -67,26 +67,26 @@
     "items": [
       {
         "title": "FOR Loop",
-        "syntax": "FOR <identifier> <- <start> TO <end>\n    <statements>\nNEXT <identifier>",
-        "example": "FOR i <- 1 TO 10\n    OUTPUT i\nNEXT i",
+        "syntax": "FOR <identifier> <-- <start> TO <end>\n    <statements>\nNEXT <identifier>",
+        "example": "FOR i <-- 1 TO 10\n    OUTPUT i\nNEXT i",
         "description": "Repeats for a fixed number of iterations"
       },
       {
         "title": "FOR with STEP",
-        "syntax": "FOR <identifier> <- <start> TO <end> STEP <increment>\n    <statements>\nNEXT <identifier>",
-        "example": "FOR i <- 0 TO 100 STEP 10\n    OUTPUT i\nNEXT i",
+        "syntax": "FOR <identifier> <-- <start> TO <end> STEP <increment>\n    <statements>\nNEXT <identifier>",
+        "example": "FOR i <-- 0 TO 100 STEP 10\n    OUTPUT i\nNEXT i",
         "description": "Loop with custom increment value"
       },
       {
         "title": "WHILE Loop",
         "syntax": "WHILE <condition> DO\n    <statements>\nENDWHILE",
-        "example": "WHILE Count < 10 DO\n    Count <- Count + 1\nENDWHILE",
+        "example": "WHILE Count < 10 DO\n    Count <-- Count + 1\nENDWHILE",
         "description": "Repeats while condition is true (checks before execution)"
       },
       {
         "title": "REPEAT Loop",
         "syntax": "REPEAT\n    <statements>\nUNTIL <condition>",
-        "example": "REPEAT\n    Count <- Count + 1\nUNTIL Count = 10",
+        "example": "REPEAT\n    Count <-- Count + 1\nUNTIL Count = 10",
         "description": "Repeats until condition is true (checks after execution)"
       }
     ]
@@ -115,7 +115,7 @@
       {
         "title": "Parameters",
         "syntax": "BYVAL <identifier> : <type>\nBYREF <identifier> : <type>",
-        "example": "PROCEDURE Test(BYVAL X : INTEGER, BYREF Y : INTEGER)\n    Y <- X * 2\nENDPROCEDURE",
+        "example": "PROCEDURE Test(BYVAL X : INTEGER, BYREF Y : INTEGER)\n    Y <-- X * 2\nENDPROCEDURE",
         "description": "BYVAL passes a copy, BYREF passes reference (can modify original)"
       }
     ]
@@ -126,7 +126,7 @@
       {
         "title": "Arithmetic",
         "syntax": "+ - * / DIV MOD",
-        "example": "Result <- 10 DIV 3  // 3\nRemainder <- 10 MOD 3  // 1",
+        "example": "Result <-- 10 DIV 3  // 3\nRemainder <-- 10 MOD 3  // 1",
         "description": "DIV for integer division, MOD for remainder"
       },
       {
@@ -149,19 +149,19 @@
       {
         "title": "String Functions",
         "syntax": "LENGTH(<string>)\nSUBSTRING(<string>, <start>, <length>)\nUCASE(<string>)\nLCASE(<string>)",
-        "example": "Len <- LENGTH(\"Hello\")  // 5\nSub <- SUBSTRING(\"Hello\", 1, 3)  // \"Hel\"",
+        "example": "Len <-- LENGTH(\"Hello\")  // 5\nSub <-- SUBSTRING(\"Hello\", 1, 3)  // \"Hel\"",
         "description": "String manipulation functions"
       },
       {
         "title": "Type Conversion",
         "syntax": "INT(<value>)\nREAL(<value>)\nSTRING(<value>)",
-        "example": "X <- INT(3.7)  // 3\nY <- STRING(42)  // \"42\"",
+        "example": "X <-- INT(3.7)  // 3\nY <-- STRING(42)  // \"42\"",
         "description": "Convert between data types"
       },
       {
         "title": "Math Functions",
         "syntax": "ROUND(<number>, <decimals>)\nRANDOM()",
-        "example": "R <- ROUND(3.14159, 2)  // 3.14\nRand <- RANDOM()  // 0.0-1.0",
+        "example": "R <-- ROUND(3.14159, 2)  // 3.14\nRand <-- RANDOM()  // 0.0-1.0",
         "description": "Mathematical operations"
       }
     ]

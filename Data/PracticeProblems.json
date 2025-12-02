@@ -5,8 +5,8 @@
     "topic": "Variables & Output",
     "title": "Calculate Rectangle Area",
     "description": "Write a program that declares variables for length and width, assigns values (length = 10, width = 5), calculates the area, and outputs the result.",
-    "hints": ["Declare three INTEGER variables: Length, Width, and Area", "Use the <- operator to assign values", "Area formula: Length * Width"],
-    "solution": "DECLARE Length : INTEGER\nDECLARE Width : INTEGER\nDECLARE Area : INTEGER\n\nLength <- 10\nWidth <- 5\nArea <- Length * Width\n\nOUTPUT \"The area is: \", Area"
+    "hints": ["Declare three INTEGER variables: Length, Width, and Area", "Use the <-- operator to assign values", "Area formula: Length * Width"],
+    "solution": "DECLARE Length : INTEGER\nDECLARE Width : INTEGER\nDECLARE Area : INTEGER\n\nLength <-- 10\nWidth <-- 5\nArea <-- Length * Width\n\nOUTPUT \"The area is: \", Area"
   },
   {
     "id": 2,
@@ -24,7 +24,7 @@
     "title": "Temperature Converter",
     "description": "Write a program that converts Celsius to Fahrenheit. Formula: F = (C * 9/5) + 32. Input temperature in Celsius and output in Fahrenheit.",
     "hints": ["Use REAL data type for decimal values", "Formula: Fahrenheit = (Celsius * 9/5) + 32", "Test with 0°C (should be 32°F)"],
-    "solution": "DECLARE Celsius : REAL\nDECLARE Fahrenheit : REAL\n\nOUTPUT \"Enter temperature in Celsius: \"\nINPUT Celsius\n\nFahrenheit <- (Celsius * 9 / 5) + 32\n\nOUTPUT \"Temperature in Fahrenheit: \", Fahrenheit"
+    "solution": "DECLARE Celsius : REAL\nDECLARE Fahrenheit : REAL\n\nOUTPUT \"Enter temperature in Celsius: \"\nINPUT Celsius\n\nFahrenheit <-- (Celsius * 9 / 5) + 32\n\nOUTPUT \"Temperature in Fahrenheit: \", Fahrenheit"
   },
   {
     "id": 4,
@@ -42,7 +42,7 @@
     "title": "Counting to 10",
     "description": "Write a program using a FOR loop to output numbers from 1 to 10.",
     "hints": ["Use FOR loop with counter from 1 TO 10", "Declare a counter variable", "Use OUTPUT inside the loop"],
-    "solution": "DECLARE Counter : INTEGER\n\nFOR Counter <- 1 TO 10\n    OUTPUT Counter\nNEXT Counter"
+    "solution": "DECLARE Counter : INTEGER\n\nFOR Counter <-- 1 TO 10\n    OUTPUT Counter\nNEXT Counter"
   },
   {
     "id": 6,
@@ -51,7 +51,7 @@
     "title": "Sum of Numbers",
     "description": "Calculate the sum of numbers from 1 to 100 using a FOR loop.",
     "hints": ["Initialize Sum to 0", "Use FOR loop from 1 TO 100", "Add each number to Sum"],
-    "solution": "DECLARE Sum, Counter : INTEGER\n\nSum <- 0\n\nFOR Counter <- 1 TO 100\n    Sum <- Sum + Counter\nNEXT Counter\n\nOUTPUT \"Sum of 1 to 100: \", Sum"
+    "solution": "DECLARE Sum, Counter : INTEGER\n\nSum <-- 0\n\nFOR Counter <-- 1 TO 100\n    Sum <-- Sum + Counter\nNEXT Counter\n\nOUTPUT \"Sum of 1 to 100: \", Sum"
   },
   {
     "id": 7,
@@ -60,7 +60,7 @@
     "title": "WHILE Loop - Password",
     "description": "Create a password checker using WHILE loop. Keep asking until user enters \"secret\". Maximum 3 attempts.",
     "hints": ["Use WHILE loop with attempt counter", "Check if password matches \"secret\"", "Limit to 3 attempts"],
-    "solution": "DECLARE Password : STRING\nDECLARE Attempts : INTEGER\n\nAttempts <- 0\nPassword <- \"\"\n\nWHILE Password <> \"secret\" AND Attempts < 3 DO\n    OUTPUT \"Enter password: \"\n    INPUT Password\n    Attempts <- Attempts + 1\n    IF Password <> \"secret\" THEN\n        OUTPUT \"Incorrect! Try again.\"\n    ENDIF\nENDWHILE\n\nIF Password = \"secret\" THEN\n    OUTPUT \"Access granted!\"\nELSE\n    OUTPUT \"Access denied. Too many attempts.\"\nENDIF"
+    "solution": "DECLARE Password : STRING\nDECLARE Attempts : INTEGER\n\nAttempts <-- 0\nPassword <-- \"\"\n\nWHILE Password <> \"secret\" AND Attempts < 3 DO\n    OUTPUT \"Enter password: \"\n    INPUT Password\n    Attempts <-- Attempts + 1\n    IF Password <> \"secret\" THEN\n        OUTPUT \"Incorrect! Try again.\"\n    ENDIF\nENDWHILE\n\nIF Password = \"secret\" THEN\n    OUTPUT \"Access granted!\"\nELSE\n    OUTPUT \"Access denied. Too many attempts.\"\nENDIF"
   },
   {
     "id": 8,
@@ -69,7 +69,7 @@
     "title": "Array Input and Output",
     "description": "Create an array of 5 numbers, input values from user, and output all values.",
     "hints": ["DECLARE array with ARRAY[1:5] OF INTEGER", "Use FOR loop to input values", "Use another FOR loop to output"],
-    "solution": "DECLARE Numbers : ARRAY[1:5] OF INTEGER\nDECLARE i : INTEGER\n\nFOR i <- 1 TO 5\n    OUTPUT \"Enter number \", i, \": \"\n    INPUT Numbers[i]\nNEXT i\n\nOUTPUT \"Your numbers:\"\nFOR i <- 1 TO 5\n    OUTPUT Numbers[i]\nNEXT i"
+    "solution": "DECLARE Numbers : ARRAY[1:5] OF INTEGER\nDECLARE i : INTEGER\n\nFOR i <-- 1 TO 5\n    OUTPUT \"Enter number \", i, \": \"\n    INPUT Numbers[i]\nNEXT i\n\nOUTPUT \"Your numbers:\"\nFOR i <-- 1 TO 5\n    OUTPUT Numbers[i]\nNEXT i"
   },
   {
     "id": 9,
@@ -78,7 +78,7 @@
     "title": "Find Maximum in Array",
     "description": "Input 5 numbers into an array, then find and output the maximum value.",
     "hints": ["Assume first element is maximum", "Loop through array comparing each element", "Update maximum when larger value found"],
-    "solution": "DECLARE Numbers : ARRAY[1:5] OF INTEGER\nDECLARE i, Max : INTEGER\n\nFOR i <- 1 TO 5\n    OUTPUT \"Enter number \", i, \": \"\n    INPUT Numbers[i]\nNEXT i\n\nMax <- Numbers[1]\nFOR i <- 2 TO 5\n    IF Numbers[i] > Max THEN\n        Max <- Numbers[i]\n    ENDIF\nNEXT i\n\nOUTPUT \"Maximum value: \", Max"
+    "solution": "DECLARE Numbers : ARRAY[1:5] OF INTEGER\nDECLARE i, Max : INTEGER\n\nFOR i <-- 1 TO 5\n    OUTPUT \"Enter number \", i, \": \"\n    INPUT Numbers[i]\nNEXT i\n\nMax <-- Numbers[1]\nFOR i <-- 2 TO 5\n    IF Numbers[i] > Max THEN\n        Max <-- Numbers[i]\n    ENDIF\nNEXT i\n\nOUTPUT \"Maximum value: \", Max"
   },
   {
     "id": 10,
@@ -87,7 +87,7 @@
     "title": "Calculate Average",
     "description": "Input 10 numbers into an array, calculate and output the average.",
     "hints": ["Sum all elements", "Divide sum by number of elements", "Use REAL for average to handle decimals"],
-    "solution": "DECLARE Numbers : ARRAY[1:10] OF INTEGER\nDECLARE i, Sum : INTEGER\nDECLARE Average : REAL\n\nSum <- 0\n\nFOR i <- 1 TO 10\n    OUTPUT \"Enter number \", i, \": \"\n    INPUT Numbers[i]\n    Sum <- Sum + Numbers[i]\nNEXT i\n\nAverage <- REAL(Sum) / 10.0\n\nOUTPUT \"Average: \", Average"
+    "solution": "DECLARE Numbers : ARRAY[1:10] OF INTEGER\nDECLARE i, Sum : INTEGER\nDECLARE Average : REAL\n\nSum <-- 0\n\nFOR i <-- 1 TO 10\n    OUTPUT \"Enter number \", i, \": \"\n    INPUT Numbers[i]\n    Sum <-- Sum + Numbers[i]\nNEXT i\n\nAverage <-- REAL(Sum) / 10.0\n\nOUTPUT \"Average: \", Average"
   },
   {
     "id": 11,
@@ -96,7 +96,7 @@
     "title": "String Length",
     "description": "Input a string and output its length using the LENGTH function.",
     "hints": ["Use LENGTH() function", "Store result in INTEGER variable"],
-    "solution": "DECLARE Text : STRING\nDECLARE Len : INTEGER\n\nOUTPUT \"Enter text: \"\nINPUT Text\n\nLen <- LENGTH(Text)\n\nOUTPUT \"Length: \", Len"
+    "solution": "DECLARE Text : STRING\nDECLARE Len : INTEGER\n\nOUTPUT \"Enter text: \"\nINPUT Text\n\nLen <-- LENGTH(Text)\n\nOUTPUT \"Length: \", Len"
   },
   {
     "id": 12,
@@ -105,7 +105,7 @@
     "title": "Convert to Uppercase",
     "description": "Input a string and convert it to uppercase using UCASE function.",
     "hints": ["Use UCASE() function", "Store result in another STRING variable"],
-    "solution": "DECLARE Text, Upper : STRING\n\nOUTPUT \"Enter text: \"\nINPUT Text\n\nUpper <- UCASE(Text)\n\nOUTPUT \"Uppercase: \", Upper"
+    "solution": "DECLARE Text, Upper : STRING\n\nOUTPUT \"Enter text: \"\nINPUT Text\n\nUpper <-- UCASE(Text)\n\nOUTPUT \"Uppercase: \", Upper"
   },
   {
     "id": 13,
@@ -114,7 +114,7 @@
     "title": "Extract Substring",
     "description": "Input a string and extract characters 3 to 7 using SUBSTRING function.",
     "hints": ["SUBSTRING(string, start, length)", "Start at position 3, length 5", "Handle strings shorter than 7 characters"],
-    "solution": "DECLARE Text, Sub : STRING\n\nOUTPUT \"Enter text (at least 7 chars): \"\nINPUT Text\n\nIF LENGTH(Text) >= 7 THEN\n    Sub <- SUBSTRING(Text, 3, 5)\n    OUTPUT \"Substring (3-7): \", Sub\nELSE\n    OUTPUT \"String too short!\"\nENDIF"
+    "solution": "DECLARE Text, Sub : STRING\n\nOUTPUT \"Enter text (at least 7 chars): \"\nINPUT Text\n\nIF LENGTH(Text) >= 7 THEN\n    Sub <-- SUBSTRING(Text, 3, 5)\n    OUTPUT \"Substring (3-7): \", Sub\nELSE\n    OUTPUT \"String too short!\"\nENDIF"
   },
   {
     "id": 14,
@@ -150,7 +150,7 @@
     "title": "Square Function",
     "description": "Create a function that returns the square of a number.",
     "hints": ["FUNCTION with INTEGER parameter RETURNS INTEGER", "Calculate number * number", "Use RETURN statement"],
-    "solution": "FUNCTION Square(N : INTEGER) RETURNS INTEGER\n    DECLARE Result : INTEGER\n    Result <- N * N\n    RETURN Result\nENDFUNCTION\n\nDECLARE Number, Answer : INTEGER\n\nOUTPUT \"Enter a number: \"\nINPUT Number\n\nAnswer <- Square(Number)\n\nOUTPUT \"Square: \", Answer"
+    "solution": "FUNCTION Square(N : INTEGER) RETURNS INTEGER\n    DECLARE Result : INTEGER\n    Result <-- N * N\n    RETURN Result\nENDFUNCTION\n\nDECLARE Number, Answer : INTEGER\n\nOUTPUT \"Enter a number: \"\nINPUT Number\n\nAnswer <-- Square(Number)\n\nOUTPUT \"Square: \", Answer"
   },
   {
     "id": 18,
@@ -168,7 +168,7 @@
     "title": "Linear Search",
     "description": "Search for a specific number in an array of 10 numbers. Output position if found, or \"Not found\".",
     "hints": ["Input array first", "Loop through checking each element", "Store position when found"],
-    "solution": "DECLARE Numbers : ARRAY[1:10] OF INTEGER\nDECLARE Search, i, Position : INTEGER\nDECLARE Found : BOOLEAN\n\nFOR i <- 1 TO 10\n    OUTPUT \"Enter number \", i, \": \"\n    INPUT Numbers[i]\nNEXT i\n\nOUTPUT \"Enter number to search: \"\nINPUT Search\n\nFound <- FALSE\nFOR i <- 1 TO 10\n    IF Numbers[i] = Search THEN\n        Found <- TRUE\n        Position <- i\n    ENDIF\nNEXT i\n\nIF Found THEN\n    OUTPUT \"Found at position \", Position\nELSE\n    OUTPUT \"Not found\"\nENDIF"
+    "solution": "DECLARE Numbers : ARRAY[1:10] OF INTEGER\nDECLARE Search, i, Position : INTEGER\nDECLARE Found : BOOLEAN\n\nFOR i <-- 1 TO 10\n    OUTPUT \"Enter number \", i, \": \"\n    INPUT Numbers[i]\nNEXT i\n\nOUTPUT \"Enter number to search: \"\nINPUT Search\n\nFound <-- FALSE\nFOR i <-- 1 TO 10\n    IF Numbers[i] = Search THEN\n        Found <-- TRUE\n        Position <-- i\n    ENDIF\nNEXT i\n\nIF Found THEN\n    OUTPUT \"Found at position \", Position\nELSE\n    OUTPUT \"Not found\"\nENDIF"
   },
   {
     "id": 20,
@@ -177,7 +177,7 @@
     "title": "Bubble Sort",
     "description": "Sort an array of 5 numbers in ascending order using bubble sort algorithm.",
     "hints": ["Nested loops needed", "Compare adjacent elements", "Swap if out of order"],
-    "solution": "DECLARE Numbers : ARRAY[1:5] OF INTEGER\nDECLARE i, j, Temp : INTEGER\n\nFOR i <- 1 TO 5\n    OUTPUT \"Enter number \", i, \": \"\n    INPUT Numbers[i]\nNEXT i\n\nFOR i <- 1 TO 4\n    FOR j <- 1 TO 5 - i\n        IF Numbers[j] > Numbers[j + 1] THEN\n            Temp <- Numbers[j]\n            Numbers[j] <- Numbers[j + 1]\n            Numbers[j + 1] <- Temp\n        ENDIF\n    NEXT j\nNEXT i\n\nOUTPUT \"Sorted array:\"\nFOR i <- 1 TO 5\n    OUTPUT Numbers[i]\nNEXT i"
+    "solution": "DECLARE Numbers : ARRAY[1:5] OF INTEGER\nDECLARE i, j, Temp : INTEGER\n\nFOR i <-- 1 TO 5\n    OUTPUT \"Enter number \", i, \": \"\n    INPUT Numbers[i]\nNEXT i\n\nFOR i <-- 1 TO 4\n    FOR j <-- 1 TO 5 - i\n        IF Numbers[j] > Numbers[j + 1] THEN\n            Temp <-- Numbers[j]\n            Numbers[j] <-- Numbers[j + 1]\n            Numbers[j + 1] <-- Temp\n        ENDIF\n    NEXT j\nNEXT i\n\nOUTPUT \"Sorted array:\"\nFOR i <-- 1 TO 5\n    OUTPUT Numbers[i]\nNEXT i"
   },
   {
     "id": 21,
@@ -186,7 +186,7 @@
     "title": "Age Validation",
     "description": "Input age with validation - must be between 0 and 120. Keep asking until valid.",
     "hints": ["Use WHILE or REPEAT loop", "Check range 0-120", "Display error message for invalid input"],
-    "solution": "DECLARE Age : INTEGER\nDECLARE Valid : BOOLEAN\n\nValid <- FALSE\n\nWHILE Valid = FALSE DO\n    OUTPUT \"Enter age (0-120): \"\n    INPUT Age\n    IF Age >= 0 AND Age <= 120 THEN\n        Valid <- TRUE\n    ELSE\n        OUTPUT \"Invalid! Age must be 0-120\"\n    ENDIF\nENDWHILE\n\nOUTPUT \"Age accepted: \", Age"
+    "solution": "DECLARE Age : INTEGER\nDECLARE Valid : BOOLEAN\n\nValid <-- FALSE\n\nWHILE Valid = FALSE DO\n    OUTPUT \"Enter age (0-120): \"\n    INPUT Age\n    IF Age >= 0 AND Age <= 120 THEN\n        Valid <-- TRUE\n    ELSE\n        OUTPUT \"Invalid! Age must be 0-120\"\n    ENDIF\nENDWHILE\n\nOUTPUT \"Age accepted: \", Age"
   },
   {
     "id": 22,
@@ -195,7 +195,7 @@
     "title": "Count Positive Numbers",
     "description": "Input 10 numbers and count how many are positive (greater than 0).",
     "hints": ["Initialize counter to 0", "Check each number with IF", "Increment counter when positive"],
-    "solution": "DECLARE Numbers : ARRAY[1:10] OF INTEGER\nDECLARE i, Count : INTEGER\n\nCount <- 0\n\nFOR i <- 1 TO 10\n    OUTPUT \"Enter number \", i, \": \"\n    INPUT Numbers[i]\n    IF Numbers[i] > 0 THEN\n        Count <- Count + 1\n    ENDIF\nNEXT i\n\nOUTPUT \"Positive numbers: \", Count"
+    "solution": "DECLARE Numbers : ARRAY[1:10] OF INTEGER\nDECLARE i, Count : INTEGER\n\nCount <-- 0\n\nFOR i <-- 1 TO 10\n    OUTPUT \"Enter number \", i, \": \"\n    INPUT Numbers[i]\n    IF Numbers[i] > 0 THEN\n        Count <-- Count + 1\n    ENDIF\nNEXT i\n\nOUTPUT \"Positive numbers: \", Count"
   },
   {
     "id": 23,
@@ -204,7 +204,7 @@
     "title": "Count Vowels",
     "description": "Input a string and count the number of vowels (A, E, I, O, U - case insensitive).",
     "hints": ["Convert string to uppercase first", "Loop through each character", "Check if character is A, E, I, O, or U"],
-    "solution": "DECLARE Text, Upper, Char : STRING\nDECLARE i, Count : INTEGER\n\nOUTPUT \"Enter text: \"\nINPUT Text\n\nUpper <- UCASE(Text)\nCount <- 0\n\nFOR i <- 1 TO LENGTH(Upper)\n    Char <- SUBSTRING(Upper, i, 1)\n    IF Char = \"A\" OR Char = \"E\" OR Char = \"I\" OR Char = \"O\" OR Char = \"U\" THEN\n        Count <- Count + 1\n    ENDIF\nNEXT i\n\nOUTPUT \"Number of vowels: \", Count"
+    "solution": "DECLARE Text, Upper, Char : STRING\nDECLARE i, Count : INTEGER\n\nOUTPUT \"Enter text: \"\nINPUT Text\n\nUpper <-- UCASE(Text)\nCount <-- 0\n\nFOR i <-- 1 TO LENGTH(Upper)\n    Char <-- SUBSTRING(Upper, i, 1)\n    IF Char = \"A\" OR Char = \"E\" OR Char = \"I\" OR Char = \"O\" OR Char = \"U\" THEN\n        Count <-- Count + 1\n    ENDIF\nNEXT i\n\nOUTPUT \"Number of vowels: \", Count"
   },
   {
     "id": 24,
@@ -213,7 +213,7 @@
     "title": "Circle Calculations",
     "description": "Input radius and calculate area and circumference. Use π = 3.14159.",
     "hints": ["Area = π * radius²", "Circumference = 2 * π * radius", "Use REAL data type"],
-    "solution": "DECLARE Radius, Area, Circumference, Pi : REAL\n\nPi <- 3.14159\n\nOUTPUT \"Enter radius: \"\nINPUT Radius\n\nArea <- Pi * Radius * Radius\nCircumference <- 2 * Pi * Radius\n\nOUTPUT \"Area: \", Area\nOUTPUT \"Circumference: \", Circumference"
+    "solution": "DECLARE Radius, Area, Circumference, Pi : REAL\n\nPi <-- 3.14159\n\nOUTPUT \"Enter radius: \"\nINPUT Radius\n\nArea <-- Pi * Radius * Radius\nCircumference <-- 2 * Pi * Radius\n\nOUTPUT \"Area: \", Area\nOUTPUT \"Circumference: \", Circumference"
   },
   {
     "id": 25,
@@ -222,7 +222,7 @@
     "title": "Multiplication Table",
     "description": "Display a 5x5 multiplication table (1 to 5).",
     "hints": ["Use nested FOR loops", "Outer loop for rows", "Inner loop for columns"],
-    "solution": "DECLARE Row, Col, Result : INTEGER\n\nOUTPUT \"Multiplication Table:\"\n\nFOR Row <- 1 TO 5\n    FOR Col <- 1 TO 5\n        Result <- Row * Col\n        OUTPUT Result, \" \"\n    NEXT Col\n    OUTPUT \"\"\nNEXT Row"
+    "solution": "DECLARE Row, Col, Result : INTEGER\n\nOUTPUT \"Multiplication Table:\"\n\nFOR Row <-- 1 TO 5\n    FOR Col <-- 1 TO 5\n        Result <-- Row * Col\n        OUTPUT Result, \" \"\n    NEXT Col\n    OUTPUT \"\"\nNEXT Row"
   },
   {
     "id": 26,
@@ -231,7 +231,7 @@
     "title": "Matrix Input",
     "description": "Create a 3x3 matrix, input 9 values, and display them in grid format.",
     "hints": ["ARRAY[1:3, 1:3]", "Nested loops for input", "Nested loops for output"],
-    "solution": "DECLARE Matrix : ARRAY[1:3, 1:3] OF INTEGER\nDECLARE Row, Col : INTEGER\n\nOUTPUT \"Enter 9 values:\"\nFOR Row <- 1 TO 3\n    FOR Col <- 1 TO 3\n        OUTPUT \"Enter value [\", Row, \",\", Col, \"]: \"\n        INPUT Matrix[Row, Col]\n    NEXT Col\nNEXT Row\n\nOUTPUT \"Matrix:\"\nFOR Row <- 1 TO 3\n    FOR Col <- 1 TO 3\n        OUTPUT Matrix[Row, Col], \" \"\n    NEXT Col\n    OUTPUT \"\"\nNEXT Row"
+    "solution": "DECLARE Matrix : ARRAY[1:3, 1:3] OF INTEGER\nDECLARE Row, Col : INTEGER\n\nOUTPUT \"Enter 9 values:\"\nFOR Row <-- 1 TO 3\n    FOR Col <-- 1 TO 3\n        OUTPUT \"Enter value [\", Row, \",\", Col, \"]: \"\n        INPUT Matrix[Row, Col]\n    NEXT Col\nNEXT Row\n\nOUTPUT \"Matrix:\"\nFOR Row <-- 1 TO 3\n    FOR Col <-- 1 TO 3\n        OUTPUT Matrix[Row, Col], \" \"\n    NEXT Col\n    OUTPUT \"\"\nNEXT Row"
   },
   {
     "id": 27,
@@ -240,7 +240,7 @@
     "title": "INT and REAL Functions",
     "description": "Input a real number and demonstrate INT and ROUND functions.",
     "hints": ["INT truncates to integer", "ROUND rounds to nearest", "Show both results"],
-    "solution": "DECLARE Number : REAL\nDECLARE IntPart : INTEGER\nDECLARE Rounded : REAL\n\nOUTPUT \"Enter a decimal number: \"\nINPUT Number\n\nIntPart <- INT(Number)\nRounded <- ROUND(Number, 0)\n\nOUTPUT \"Original: \", Number\nOUTPUT \"INT: \", IntPart\nOUTPUT \"ROUND: \", Rounded"
+    "solution": "DECLARE Number : REAL\nDECLARE IntPart : INTEGER\nDECLARE Rounded : REAL\n\nOUTPUT \"Enter a decimal number: \"\nINPUT Number\n\nIntPart <-- INT(Number)\nRounded <-- ROUND(Number, 0)\n\nOUTPUT \"Original: \", Number\nOUTPUT \"INT: \", IntPart\nOUTPUT \"ROUND: \", Rounded"
   },
   {
     "id": 28,
@@ -249,7 +249,7 @@
     "title": "Running Total",
     "description": "Input numbers until 0 is entered. Display running total after each input and final total.",
     "hints": ["Use WHILE or REPEAT loop", "Check for 0 to stop", "Update total after each input"],
-    "solution": "DECLARE Number, Total : INTEGER\n\nTotal <- 0\nNumber <- -1\n\nWHILE Number <> 0 DO\n    OUTPUT \"Enter number (0 to stop): \"\n    INPUT Number\n    IF Number <> 0 THEN\n        Total <- Total + Number\n        OUTPUT \"Running total: \", Total\n    ENDIF\nENDWHILE\n\nOUTPUT \"Final total: \", Total"
+    "solution": "DECLARE Number, Total : INTEGER\n\nTotal <-- 0\nNumber <-- -1\n\nWHILE Number <> 0 DO\n    OUTPUT \"Enter number (0 to stop): \"\n    INPUT Number\n    IF Number <> 0 THEN\n        Total <-- Total + Number\n        OUTPUT \"Running total: \", Total\n    ENDIF\nENDWHILE\n\nOUTPUT \"Final total: \", Total"
   },
   {
     "id": 29,
@@ -258,7 +258,7 @@
     "title": "Swap Two Numbers",
     "description": "Create a procedure using BYREF to swap two numbers.",
     "hints": ["Use BYREF for both parameters", "Need temporary variable for swapping", "Values should be swapped in main program"],
-    "solution": "PROCEDURE Swap(BYREF A : INTEGER, BYREF B : INTEGER)\n    DECLARE Temp : INTEGER\n    Temp <- A\n    A <- B\n    B <- Temp\nENDPROCEDURE\n\nDECLARE X, Y : INTEGER\n\nX <- 10\nY <- 20\n\nOUTPUT \"Before: X=\", X, \" Y=\", Y\n\nCALL Swap(X, Y)\n\nOUTPUT \"After: X=\", X, \" Y=\", Y"
+    "solution": "PROCEDURE Swap(BYREF A : INTEGER, BYREF B : INTEGER)\n    DECLARE Temp : INTEGER\n    Temp <-- A\n    A <-- B\n    B <-- Temp\nENDPROCEDURE\n\nDECLARE X, Y : INTEGER\n\nX <-- 10\nY <-- 20\n\nOUTPUT \"Before: X=\", X, \" Y=\", Y\n\nCALL Swap(X, Y)\n\nOUTPUT \"After: X=\", X, \" Y=\", Y"
   },
   {
     "id": 30,
@@ -267,7 +267,7 @@
     "title": "Find Minimum",
     "description": "Input 8 numbers into an array and find the minimum value.",
     "hints": ["Assume first element is minimum", "Compare with each subsequent element", "Update minimum when smaller found"],
-    "solution": "DECLARE Numbers : ARRAY[1:8] OF INTEGER\nDECLARE i, Min : INTEGER\n\nFOR i <- 1 TO 8\n    OUTPUT \"Enter number \", i, \": \"\n    INPUT Numbers[i]\nNEXT i\n\nMin <- Numbers[1]\nFOR i <- 2 TO 8\n    IF Numbers[i] < Min THEN\n        Min <- Numbers[i]\n    ENDIF\nNEXT i\n\nOUTPUT \"Minimum: \", Min"
+    "solution": "DECLARE Numbers : ARRAY[1:8] OF INTEGER\nDECLARE i, Min : INTEGER\n\nFOR i <-- 1 TO 8\n    OUTPUT \"Enter number \", i, \": \"\n    INPUT Numbers[i]\nNEXT i\n\nMin <-- Numbers[1]\nFOR i <-- 2 TO 8\n    IF Numbers[i] < Min THEN\n        Min <-- Numbers[i]\n    ENDIF\nNEXT i\n\nOUTPUT \"Minimum: \", Min"
   },
   {
     "id": 31,
@@ -276,7 +276,7 @@
     "title": "Build Full Name",
     "description": "Input first name and last name separately, then concatenate them with a space.",
     "hints": ["Use & operator for concatenation", "Remember to add space between names"],
-    "solution": "DECLARE FirstName, LastName, FullName : STRING\n\nOUTPUT \"Enter first name: \"\nINPUT FirstName\n\nOUTPUT \"Enter last name: \"\nINPUT LastName\n\nFullName <- FirstName & \" \" & LastName\n\nOUTPUT \"Full name: \", FullName"
+    "solution": "DECLARE FirstName, LastName, FullName : STRING\n\nOUTPUT \"Enter first name: \"\nINPUT FirstName\n\nOUTPUT \"Enter last name: \"\nINPUT LastName\n\nFullName <-- FirstName & \" \" & LastName\n\nOUTPUT \"Full name: \", FullName"
   },
   {
     "id": 32,
@@ -285,7 +285,7 @@
     "title": "Ticket Price Calculator",
     "description": "Calculate ticket price: Child (under 12): $5, Adult (12-64): $10, Senior (65+): $7.",
     "hints": ["Input age first", "Use nested IF or ELSE IF", "Three price categories"],
-    "solution": "DECLARE Age, Price : INTEGER\n\nOUTPUT \"Enter age: \"\nINPUT Age\n\nIF Age < 12 THEN\n    Price <- 5\n    OUTPUT \"Child ticket: $\", Price\nELSE IF Age <= 64 THEN\n    Price <- 10\n    OUTPUT \"Adult ticket: $\", Price\nELSE\n    Price <- 7\n    OUTPUT \"Senior ticket: $\", Price\nENDIF"
+    "solution": "DECLARE Age, Price : INTEGER\n\nOUTPUT \"Enter age: \"\nINPUT Age\n\nIF Age < 12 THEN\n    Price <-- 5\n    OUTPUT \"Child ticket: $\", Price\nELSE IF Age <= 64 THEN\n    Price <-- 10\n    OUTPUT \"Adult ticket: $\", Price\nELSE\n    Price <-- 7\n    OUTPUT \"Senior ticket: $\", Price\nENDIF"
   },
   {
     "id": 33,
@@ -294,7 +294,7 @@
     "title": "Factorial Function",
     "description": "Create a function to calculate factorial of a number (e.g., 5! = 120).",
     "hints": ["Use FOR loop from 1 to N", "Multiply result by each number", "Initialize result to 1"],
-    "solution": "FUNCTION Factorial(N : INTEGER) RETURNS INTEGER\n    DECLARE Result, i : INTEGER\n    Result <- 1\n    FOR i <- 1 TO N\n        Result <- Result * i\n    NEXT i\n    RETURN Result\nENDFUNCTION\n\nDECLARE Number, Answer : INTEGER\n\nOUTPUT \"Enter number: \"\nINPUT Number\n\nAnswer <- Factorial(Number)\n\nOUTPUT \"Factorial: \", Answer"
+    "solution": "FUNCTION Factorial(N : INTEGER) RETURNS INTEGER\n    DECLARE Result, i : INTEGER\n    Result <-- 1\n    FOR i <-- 1 TO N\n        Result <-- Result * i\n    NEXT i\n    RETURN Result\nENDFUNCTION\n\nDECLARE Number, Answer : INTEGER\n\nOUTPUT \"Enter number: \"\nINPUT Number\n\nAnswer <-- Factorial(Number)\n\nOUTPUT \"Factorial: \", Answer"
   },
   {
     "id": 34,
@@ -303,7 +303,7 @@
     "title": "Statistics Calculator",
     "description": "Input 10 numbers and calculate: total, average, count of evens, count of odds.",
     "hints": ["Keep track of multiple counters", "Use MOD to check even/odd", "Calculate average at end"],
-    "solution": "DECLARE Numbers : ARRAY[1:10] OF INTEGER\nDECLARE i, Total, Evens, Odds : INTEGER\nDECLARE Average : REAL\n\nTotal <- 0\nEvens <- 0\nOdds <- 0\n\nFOR i <- 1 TO 10\n    OUTPUT \"Enter number \", i, \": \"\n    INPUT Numbers[i]\n    Total <- Total + Numbers[i]\n    IF Numbers[i] MOD 2 = 0 THEN\n        Evens <- Evens + 1\n    ELSE\n        Odds <- Odds + 1\n    ENDIF\nNEXT i\n\nAverage <- REAL(Total) / 10.0\n\nOUTPUT \"Total: \", Total\nOUTPUT \"Average: \", Average\nOUTPUT \"Even numbers: \", Evens\nOUTPUT \"Odd numbers: \", Odds"
+    "solution": "DECLARE Numbers : ARRAY[1:10] OF INTEGER\nDECLARE i, Total, Evens, Odds : INTEGER\nDECLARE Average : REAL\n\nTotal <-- 0\nEvens <-- 0\nOdds <-- 0\n\nFOR i <-- 1 TO 10\n    OUTPUT \"Enter number \", i, \": \"\n    INPUT Numbers[i]\n    Total <-- Total + Numbers[i]\n    IF Numbers[i] MOD 2 = 0 THEN\n        Evens <-- Evens + 1\n    ELSE\n        Odds <-- Odds + 1\n    ENDIF\nNEXT i\n\nAverage <-- REAL(Total) / 10.0\n\nOUTPUT \"Total: \", Total\nOUTPUT \"Average: \", Average\nOUTPUT \"Even numbers: \", Evens\nOUTPUT \"Odd numbers: \", Odds"
   },
   {
     "id": 35,
@@ -312,7 +312,7 @@
     "title": "Leap Year Checker",
     "description": "Input a year and determine if it's a leap year. Rules: divisible by 4, except centuries unless divisible by 400.",
     "hints": ["First check if divisible by 400", "Then check if divisible by 100 (not leap)", "Finally check if divisible by 4 (leap)"],
-    "solution": "DECLARE Year : INTEGER\nDECLARE IsLeap : BOOLEAN\n\nOUTPUT \"Enter year: \"\nINPUT Year\n\nIF Year MOD 400 = 0 THEN\n    IsLeap <- TRUE\nELSE IF Year MOD 100 = 0 THEN\n    IsLeap <- FALSE\nELSE IF Year MOD 4 = 0 THEN\n    IsLeap <- TRUE\nELSE\n    IsLeap <- FALSE\nENDIF\n\nIF IsLeap THEN\n    OUTPUT Year, \" is a leap year\"\nELSE\n    OUTPUT Year, \" is not a leap year\"\nENDIF"
+    "solution": "DECLARE Year : INTEGER\nDECLARE IsLeap : BOOLEAN\n\nOUTPUT \"Enter year: \"\nINPUT Year\n\nIF Year MOD 400 = 0 THEN\n    IsLeap <-- TRUE\nELSE IF Year MOD 100 = 0 THEN\n    IsLeap <-- FALSE\nELSE IF Year MOD 4 = 0 THEN\n    IsLeap <-- TRUE\nELSE\n    IsLeap <-- FALSE\nENDIF\n\nIF IsLeap THEN\n    OUTPUT Year, \" is a leap year\"\nELSE\n    OUTPUT Year, \" is not a leap year\"\nENDIF"
   },
   {
     "id": 36,
@@ -321,7 +321,7 @@
     "title": "Number Guessing Game",
     "description": "Computer picks a number 1-10. User guesses until correct. Show number of attempts.",
     "hints": ["Use REPEAT UNTIL loop", "Count attempts", "Give feedback (higher/lower)"],
-    "solution": "DECLARE Target, Guess, Attempts : INTEGER\n\nTarget <- 7\nAttempts <- 0\n\nOUTPUT \"Guess the number (1-10)!\"\n\nREPEAT\n    OUTPUT \"Enter guess: \"\n    INPUT Guess\n    Attempts <- Attempts + 1\n    IF Guess < Target THEN\n        OUTPUT \"Too low!\"\n    ELSE IF Guess > Target THEN\n        OUTPUT \"Too high!\"\n    ENDIF\nUNTIL Guess = Target\n\nOUTPUT \"Correct! Attempts: \", Attempts"
+    "solution": "DECLARE Target, Guess, Attempts : INTEGER\n\nTarget <-- 7\nAttempts <-- 0\n\nOUTPUT \"Guess the number (1-10)!\"\n\nREPEAT\n    OUTPUT \"Enter guess: \"\n    INPUT Guess\n    Attempts <-- Attempts + 1\n    IF Guess < Target THEN\n        OUTPUT \"Too low!\"\n    ELSE IF Guess > Target THEN\n        OUTPUT \"Too high!\"\n    ENDIF\nUNTIL Guess = Target\n\nOUTPUT \"Correct! Attempts: \", Attempts"
   },
   {
     "id": 37,
@@ -339,7 +339,7 @@
     "title": "Palindrome Checker",
     "description": "Check if a string is a palindrome (reads same forwards and backwards).",
     "hints": ["Compare first and last characters", "Move towards middle", "Use SUBSTRING to get individual characters"],
-    "solution": "DECLARE Text : STRING\nDECLARE i, Len : INTEGER\nDECLARE IsPalindrome : BOOLEAN\n\nOUTPUT \"Enter text: \"\nINPUT Text\n\nLen <- LENGTH(Text)\nIsPalindrome <- TRUE\n\nFOR i <- 1 TO Len DIV 2\n    IF SUBSTRING(Text, i, 1) <> SUBSTRING(Text, Len - i + 1, 1) THEN\n        IsPalindrome <- FALSE\n    ENDIF\nNEXT i\n\nIF IsPalindrome THEN\n    OUTPUT \"Is a palindrome\"\nELSE\n    OUTPUT \"Not a palindrome\"\nENDIF"
+    "solution": "DECLARE Text : STRING\nDECLARE i, Len : INTEGER\nDECLARE IsPalindrome : BOOLEAN\n\nOUTPUT \"Enter text: \"\nINPUT Text\n\nLen <-- LENGTH(Text)\nIsPalindrome <-- TRUE\n\nFOR i <-- 1 TO Len DIV 2\n    IF SUBSTRING(Text, i, 1) <> SUBSTRING(Text, Len - i + 1, 1) THEN\n        IsPalindrome <-- FALSE\n    ENDIF\nNEXT i\n\nIF IsPalindrome THEN\n    OUTPUT \"Is a palindrome\"\nELSE\n    OUTPUT \"Not a palindrome\"\nENDIF"
   },
   {
     "id": 39,
@@ -348,7 +348,7 @@
     "title": "Reverse an Array",
     "description": "Input 6 numbers into an array, then output them in reverse order.",
     "hints": ["Input normally from index 1 to 6", "Output from index 6 down to 1", "Use FOR loop with negative step or countdown"],
-    "solution": "DECLARE Numbers : ARRAY[1:6] OF INTEGER\nDECLARE i : INTEGER\n\nOUTPUT \"Enter 6 numbers:\"\nFOR i <- 1 TO 6\n    INPUT Numbers[i]\nNEXT i\n\nOUTPUT \"Reversed:\"\nFOR i <- 6 TO 1 STEP -1\n    OUTPUT Numbers[i]\nNEXT i"
+    "solution": "DECLARE Numbers : ARRAY[1:6] OF INTEGER\nDECLARE i : INTEGER\n\nOUTPUT \"Enter 6 numbers:\"\nFOR i <-- 1 TO 6\n    INPUT Numbers[i]\nNEXT i\n\nOUTPUT \"Reversed:\"\nFOR i <-- 6 TO 1 STEP -1\n    OUTPUT Numbers[i]\nNEXT i"
   },
   {
     "id": 40,
@@ -357,7 +357,7 @@
     "title": "BMI Calculator",
     "description": "Calculate BMI = weight / (height²). Classify: Underweight (<18.5), Normal (18.5-24.9), Overweight (25-29.9), Obese (30+).",
     "hints": ["Input weight (kg) and height (m)", "BMI = weight / (height * height)", "Use IF-ELSE IF for classification"],
-    "solution": "DECLARE Weight, Height, BMI : REAL\n\nOUTPUT \"Enter weight (kg): \"\nINPUT Weight\n\nOUTPUT \"Enter height (m): \"\nINPUT Height\n\nBMI <- Weight / (Height * Height)\n\nOUTPUT \"BMI: \", BMI\n\nIF BMI < 18.5 THEN\n    OUTPUT \"Underweight\"\nELSE IF BMI < 25.0 THEN\n    OUTPUT \"Normal\"\nELSE IF BMI < 30.0 THEN\n    OUTPUT \"Overweight\"\nELSE\n    OUTPUT \"Obese\"\nENDIF"
+    "solution": "DECLARE Weight, Height, BMI : REAL\n\nOUTPUT \"Enter weight (kg): \"\nINPUT Weight\n\nOUTPUT \"Enter height (m): \"\nINPUT Height\n\nBMI <-- Weight / (Height * Height)\n\nOUTPUT \"BMI: \", BMI\n\nIF BMI < 18.5 THEN\n    OUTPUT \"Underweight\"\nELSE IF BMI < 25.0 THEN\n    OUTPUT \"Normal\"\nELSE IF BMI < 30.0 THEN\n    OUTPUT \"Overweight\"\nELSE\n    OUTPUT \"Obese\"\nENDIF"
   },
   {
     "id": 41,
@@ -366,7 +366,7 @@
     "title": "Is Prime Function",
     "description": "Create a function to check if a number is prime (only divisible by 1 and itself).",
     "hints": ["Check divisibility from 2 to N-1", "Return FALSE if any divisor found", "Return TRUE if no divisors"],
-    "solution": "FUNCTION IsPrime(N : INTEGER) RETURNS BOOLEAN\n    DECLARE i : INTEGER\n    IF N < 2 THEN\n        RETURN FALSE\n    ENDIF\n    FOR i <- 2 TO N - 1\n        IF N MOD i = 0 THEN\n            RETURN FALSE\n        ENDIF\n    NEXT i\n    RETURN TRUE\nENDFUNCTION\n\nDECLARE Number : INTEGER\n\nOUTPUT \"Enter number: \"\nINPUT Number\n\nIF IsPrime(Number) THEN\n    OUTPUT Number, \" is prime\"\nELSE\n    OUTPUT Number, \" is not prime\"\nENDIF"
+    "solution": "FUNCTION IsPrime(N : INTEGER) RETURNS BOOLEAN\n    DECLARE i : INTEGER\n    IF N < 2 THEN\n        RETURN FALSE\n    ENDIF\n    FOR i <-- 2 TO N - 1\n        IF N MOD i = 0 THEN\n            RETURN FALSE\n        ENDIF\n    NEXT i\n    RETURN TRUE\nENDFUNCTION\n\nDECLARE Number : INTEGER\n\nOUTPUT \"Enter number: \"\nINPUT Number\n\nIF IsPrime(Number) THEN\n    OUTPUT Number, \" is prime\"\nELSE\n    OUTPUT Number, \" is not prime\"\nENDIF"
   },
   {
     "id": 42,
@@ -375,7 +375,7 @@
     "title": "Row Sum Calculator",
     "description": "Create a 3x4 matrix, input values, calculate and display sum of each row.",
     "hints": ["Nested loops for input", "For each row, sum all columns", "Display sum after each row"],
-    "solution": "DECLARE Matrix : ARRAY[1:3, 1:4] OF INTEGER\nDECLARE Row, Col, Sum : INTEGER\n\nOUTPUT \"Enter 12 values:\"\nFOR Row <- 1 TO 3\n    FOR Col <- 1 TO 4\n        OUTPUT \"[\", Row, \",\", Col, \"]: \"\n        INPUT Matrix[Row, Col]\n    NEXT Col\nNEXT Row\n\nOUTPUT \"Row sums:\"\nFOR Row <- 1 TO 3\n    Sum <- 0\n    FOR Col <- 1 TO 4\n        Sum <- Sum + Matrix[Row, Col]\n    NEXT Col\n    OUTPUT \"Row \", Row, \": \", Sum\nNEXT Row"
+    "solution": "DECLARE Matrix : ARRAY[1:3, 1:4] OF INTEGER\nDECLARE Row, Col, Sum : INTEGER\n\nOUTPUT \"Enter 12 values:\"\nFOR Row <-- 1 TO 3\n    FOR Col <-- 1 TO 4\n        OUTPUT \"[\", Row, \",\", Col, \"]: \"\n        INPUT Matrix[Row, Col]\n    NEXT Col\nNEXT Row\n\nOUTPUT \"Row sums:\"\nFOR Row <-- 1 TO 3\n    Sum <-- 0\n    FOR Col <-- 1 TO 4\n        Sum <-- Sum + Matrix[Row, Col]\n    NEXT Col\n    OUTPUT \"Row \", Row, \": \", Sum\nNEXT Row"
   },
   {
     "id": 43,
@@ -384,7 +384,7 @@
     "title": "Selection Sort",
     "description": "Sort 6 numbers using selection sort algorithm.",
     "hints": ["Find minimum in unsorted portion", "Swap with first unsorted element", "Move boundary of sorted portion"],
-    "solution": "DECLARE Numbers : ARRAY[1:6] OF INTEGER\nDECLARE i, j, MinIndex, Temp : INTEGER\n\nFOR i <- 1 TO 6\n    OUTPUT \"Enter number \", i, \": \"\n    INPUT Numbers[i]\nNEXT i\n\nFOR i <- 1 TO 5\n    MinIndex <- i\n    FOR j <- i + 1 TO 6\n        IF Numbers[j] < Numbers[MinIndex] THEN\n            MinIndex <- j\n        ENDIF\n    NEXT j\n    IF MinIndex <> i THEN\n        Temp <- Numbers[i]\n        Numbers[i] <- Numbers[MinIndex]\n        Numbers[MinIndex] <- Temp\n    ENDIF\nNEXT i\n\nOUTPUT \"Sorted:\"\nFOR i <- 1 TO 6\n    OUTPUT Numbers[i]\nNEXT i"
+    "solution": "DECLARE Numbers : ARRAY[1:6] OF INTEGER\nDECLARE i, j, MinIndex, Temp : INTEGER\n\nFOR i <-- 1 TO 6\n    OUTPUT \"Enter number \", i, \": \"\n    INPUT Numbers[i]\nNEXT i\n\nFOR i <-- 1 TO 5\n    MinIndex <-- i\n    FOR j <-- i + 1 TO 6\n        IF Numbers[j] < Numbers[MinIndex] THEN\n            MinIndex <-- j\n        ENDIF\n    NEXT j\n    IF MinIndex <> i THEN\n        Temp <-- Numbers[i]\n        Numbers[i] <-- Numbers[MinIndex]\n        Numbers[MinIndex] <-- Temp\n    ENDIF\nNEXT i\n\nOUTPUT \"Sorted:\"\nFOR i <-- 1 TO 6\n    OUTPUT Numbers[i]\nNEXT i"
   },
   {
     "id": 44,
@@ -393,7 +393,7 @@
     "title": "Running Balance",
     "description": "Start with $1000. Input transactions (positive=deposit, negative=withdrawal) until 0. Show balance after each.",
     "hints": ["Initialize balance to 1000", "Add each transaction to balance", "Show running balance", "Stop when 0 entered"],
-    "solution": "DECLARE Balance, Transaction : REAL\n\nBalance <- 1000.0\n\nOUTPUT \"Starting balance: $\", Balance\nOUTPUT \"Enter transactions (0 to stop):\"\n\nREPEAT\n    OUTPUT \"Transaction: \"\n    INPUT Transaction\n    IF Transaction <> 0 THEN\n        Balance <- Balance + Transaction\n        OUTPUT \"Balance: $\", Balance\n    ENDIF\nUNTIL Transaction = 0\n\nOUTPUT \"Final balance: $\", Balance"
+    "solution": "DECLARE Balance, Transaction : REAL\n\nBalance <-- 1000.0\n\nOUTPUT \"Starting balance: $\", Balance\nOUTPUT \"Enter transactions (0 to stop):\"\n\nREPEAT\n    OUTPUT \"Transaction: \"\n    INPUT Transaction\n    IF Transaction <> 0 THEN\n        Balance <-- Balance + Transaction\n        OUTPUT \"Balance: $\", Balance\n    ENDIF\nUNTIL Transaction = 0\n\nOUTPUT \"Final balance: $\", Balance"
   },
   {
     "id": 45,
@@ -402,7 +402,7 @@
     "title": "Menu Choice Validation",
     "description": "Display a menu with 4 options. Validate that user enters 1, 2, 3, or 4.",
     "hints": ["Use REPEAT loop for validation", "Check if choice is in range 1-4", "Display error for invalid input"],
-    "solution": "DECLARE Choice : INTEGER\nDECLARE Valid : BOOLEAN\n\nREPEAT\n    OUTPUT \"=== MENU ===\"\n    OUTPUT \"1. Option A\"\n    OUTPUT \"2. Option B\"\n    OUTPUT \"3. Option C\"\n    OUTPUT \"4. Exit\"\n    OUTPUT \"Enter choice: \"\n    INPUT Choice\n    IF Choice >= 1 AND Choice <= 4 THEN\n        Valid <- TRUE\n    ELSE\n        OUTPUT \"Invalid! Enter 1-4\"\n        Valid <- FALSE\n    ENDIF\nUNTIL Valid = TRUE\n\nOUTPUT \"You selected: \", Choice"
+    "solution": "DECLARE Choice : INTEGER\nDECLARE Valid : BOOLEAN\n\nREPEAT\n    OUTPUT \"=== MENU ===\"\n    OUTPUT \"1. Option A\"\n    OUTPUT \"2. Option B\"\n    OUTPUT \"3. Option C\"\n    OUTPUT \"4. Exit\"\n    OUTPUT \"Enter choice: \"\n    INPUT Choice\n    IF Choice >= 1 AND Choice <= 4 THEN\n        Valid <-- TRUE\n    ELSE\n        OUTPUT \"Invalid! Enter 1-4\"\n        Valid <-- FALSE\n    ENDIF\nUNTIL Valid = TRUE\n\nOUTPUT \"You selected: \", Choice"
   },
   {
     "id": 46,
@@ -411,7 +411,7 @@
     "title": "Count Words",
     "description": "Input a sentence and count the number of words (words are separated by spaces).",
     "hints": ["Count spaces and add 1", "Or use LENGTH to iterate and count spaces", "Handle multiple spaces between words"],
-    "solution": "DECLARE Text, Char : STRING\nDECLARE i, Words : INTEGER\nDECLARE InWord : BOOLEAN\n\nOUTPUT \"Enter sentence: \"\nINPUT Text\n\nWords <- 0\nInWord <- FALSE\n\nFOR i <- 1 TO LENGTH(Text)\n    Char <- SUBSTRING(Text, i, 1)\n    IF Char <> \" \" THEN\n        IF InWord = FALSE THEN\n            Words <- Words + 1\n            InWord <- TRUE\n        ENDIF\n    ELSE\n        InWord <- FALSE\n    ENDIF\nNEXT i\n\nOUTPUT \"Number of words: \", Words"
+    "solution": "DECLARE Text, Char : STRING\nDECLARE i, Words : INTEGER\nDECLARE InWord : BOOLEAN\n\nOUTPUT \"Enter sentence: \"\nINPUT Text\n\nWords <-- 0\nInWord <-- FALSE\n\nFOR i <-- 1 TO LENGTH(Text)\n    Char <-- SUBSTRING(Text, i, 1)\n    IF Char <> \" \" THEN\n        IF InWord = FALSE THEN\n            Words <-- Words + 1\n            InWord <-- TRUE\n        ENDIF\n    ELSE\n        InWord <-- FALSE\n    ENDIF\nNEXT i\n\nOUTPUT \"Number of words: \", Words"
   },
   {
     "id": 47,
@@ -420,7 +420,7 @@
     "title": "Maximum of Three",
     "description": "Create a function that returns the maximum of three numbers.",
     "hints": ["Compare first two numbers", "Then compare result with third", "Return the largest"],
-    "solution": "FUNCTION Max3(A : INTEGER, B : INTEGER, C : INTEGER) RETURNS INTEGER\n    DECLARE Max : INTEGER\n    IF A > B THEN\n        Max <- A\n    ELSE\n        Max <- B\n    ENDIF\n    IF C > Max THEN\n        Max <- C\n    ENDIF\n    RETURN Max\nENDFUNCTION\n\nDECLARE X, Y, Z, Result : INTEGER\n\nOUTPUT \"Enter three numbers:\"\nINPUT X\nINPUT Y\nINPUT Z\n\nResult <- Max3(X, Y, Z)\n\nOUTPUT \"Maximum: \", Result"
+    "solution": "FUNCTION Max3(A : INTEGER, B : INTEGER, C : INTEGER) RETURNS INTEGER\n    DECLARE Max : INTEGER\n    IF A > B THEN\n        Max <-- A\n    ELSE\n        Max <-- B\n    ENDIF\n    IF C > Max THEN\n        Max <-- C\n    ENDIF\n    RETURN Max\nENDFUNCTION\n\nDECLARE X, Y, Z, Result : INTEGER\n\nOUTPUT \"Enter three numbers:\"\nINPUT X\nINPUT Y\nINPUT Z\n\nResult <-- Max3(X, Y, Z)\n\nOUTPUT \"Maximum: \", Result"
   },
   {
     "id": 48,
@@ -429,7 +429,7 @@
     "title": "Find Duplicates",
     "description": "Input 10 numbers. Report if there are any duplicate values.",
     "hints": ["Use nested loops to compare each pair", "Set flag when duplicate found", "Can stop search after finding first duplicate"],
-    "solution": "DECLARE Numbers : ARRAY[1:10] OF INTEGER\nDECLARE i, j : INTEGER\nDECLARE Found : BOOLEAN\n\nFOR i <- 1 TO 10\n    OUTPUT \"Enter number \", i, \": \"\n    INPUT Numbers[i]\nNEXT i\n\nFound <- FALSE\n\nFOR i <- 1 TO 9\n    FOR j <- i + 1 TO 10\n        IF Numbers[i] = Numbers[j] THEN\n            Found <- TRUE\n            OUTPUT \"Duplicate found: \", Numbers[i]\n        ENDIF\n    NEXT j\nNEXT i\n\nIF Found = FALSE THEN\n    OUTPUT \"No duplicates\"\nENDIF"
+    "solution": "DECLARE Numbers : ARRAY[1:10] OF INTEGER\nDECLARE i, j : INTEGER\nDECLARE Found : BOOLEAN\n\nFOR i <-- 1 TO 10\n    OUTPUT \"Enter number \", i, \": \"\n    INPUT Numbers[i]\nNEXT i\n\nFound <-- FALSE\n\nFOR i <-- 1 TO 9\n    FOR j <-- i + 1 TO 10\n        IF Numbers[i] = Numbers[j] THEN\n            Found <-- TRUE\n            OUTPUT \"Duplicate found: \", Numbers[i]\n        ENDIF\n    NEXT j\nNEXT i\n\nIF Found = FALSE THEN\n    OUTPUT \"No duplicates\"\nENDIF"
   },
   {
     "id": 49,
@@ -438,7 +438,7 @@
     "title": "Draw Rectangle",
     "description": "Create a procedure that draws a rectangle using asterisks. Parameters: width and height.",
     "hints": ["Two parameters: Width and Height", "Outer loop for rows", "Inner loop for columns", "Print asterisk in each position"],
-    "solution": "PROCEDURE DrawRectangle(Width : INTEGER, Height : INTEGER)\n    DECLARE Row, Col : INTEGER\n    FOR Row <- 1 TO Height\n        FOR Col <- 1 TO Width\n            OUTPUT \"*\"\n        NEXT Col\n        OUTPUT \"\"\n    NEXT Row\nENDPROCEDURE\n\nDECLARE W, H : INTEGER\n\nOUTPUT \"Enter width: \"\nINPUT W\nOUTPUT \"Enter height: \"\nINPUT H\n\nCALL DrawRectangle(W, H)"
+    "solution": "PROCEDURE DrawRectangle(Width : INTEGER, Height : INTEGER)\n    DECLARE Row, Col : INTEGER\n    FOR Row <-- 1 TO Height\n        FOR Col <-- 1 TO Width\n            OUTPUT \"*\"\n        NEXT Col\n        OUTPUT \"\"\n    NEXT Row\nENDPROCEDURE\n\nDECLARE W, H : INTEGER\n\nOUTPUT \"Enter width: \"\nINPUT W\nOUTPUT \"Enter height: \"\nINPUT H\n\nCALL DrawRectangle(W, H)"
   },
   {
     "id": 50,
@@ -447,6 +447,6 @@
     "title": "Student Grade System",
     "description": "Input 5 students' names and scores. Calculate average, find highest, display all with pass/fail (50% pass mark).",
     "hints": ["Use parallel arrays for names and scores", "Calculate average as you go", "Track highest score and position", "Use IF to determine pass/fail"],
-    "solution": "DECLARE Names : ARRAY[1:5] OF STRING\nDECLARE Scores : ARRAY[1:5] OF INTEGER\nDECLARE i, Total, Highest, HighestIndex : INTEGER\nDECLARE Average : REAL\n\nTotal <- 0\nHighest <- 0\n\nFOR i <- 1 TO 5\n    OUTPUT \"Student \", i, \" name: \"\n    INPUT Names[i]\n    OUTPUT \"Score: \"\n    INPUT Scores[i]\n    Total <- Total + Scores[i]\n    IF Scores[i] > Highest THEN\n        Highest <- Scores[i]\n        HighestIndex <- i\n    ENDIF\nNEXT i\n\nAverage <- REAL(Total) / 5.0\n\nOUTPUT \"Results:\"\nFOR i <- 1 TO 5\n    OUTPUT Names[i], \": \", Scores[i]\n    IF Scores[i] >= 50 THEN\n        OUTPUT \"PASS\"\n    ELSE\n        OUTPUT \"FAIL\"\n    ENDIF\nNEXT i\n\nOUTPUT \"Average: \", Average\nOUTPUT \"Highest: \", Names[HighestIndex], \" (\", Highest, \")\""
+    "solution": "DECLARE Names : ARRAY[1:5] OF STRING\nDECLARE Scores : ARRAY[1:5] OF INTEGER\nDECLARE i, Total, Highest, HighestIndex : INTEGER\nDECLARE Average : REAL\n\nTotal <-- 0\nHighest <-- 0\n\nFOR i <-- 1 TO 5\n    OUTPUT \"Student \", i, \" name: \"\n    INPUT Names[i]\n    OUTPUT \"Score: \"\n    INPUT Scores[i]\n    Total <-- Total + Scores[i]\n    IF Scores[i] > Highest THEN\n        Highest <-- Scores[i]\n        HighestIndex <-- i\n    ENDIF\nNEXT i\n\nAverage <-- REAL(Total) / 5.0\n\nOUTPUT \"Results:\"\nFOR i <-- 1 TO 5\n    OUTPUT Names[i], \": \", Scores[i]\n    IF Scores[i] >= 50 THEN\n        OUTPUT \"PASS\"\n    ELSE\n        OUTPUT \"FAIL\"\n    ENDIF\nNEXT i\n\nOUTPUT \"Average: \", Average\nOUTPUT \"Highest: \", Names[HighestIndex], \" (\", Highest, \")\""
   }
 ]

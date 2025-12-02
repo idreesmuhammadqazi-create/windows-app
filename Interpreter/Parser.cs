@@ -246,7 +246,7 @@ namespace PseudoRun.Desktop.Interpreter
                 };
             }
 
-            Consume(TokenType.ASSIGNMENT, "Expected <- in assignment");
+            Consume(TokenType.ASSIGNMENT, "Expected <-- in assignment");
             IExpressionNode value = ParseExpression();
 
             return new AssignmentNode
@@ -455,7 +455,7 @@ namespace PseudoRun.Desktop.Interpreter
             int line = Advance().Line; // consume FOR
 
             string variable = Consume(TokenType.IDENTIFIER, "Expected variable name after FOR").Value;
-            Consume(TokenType.ASSIGNMENT, "Expected <- after FOR variable");
+            Consume(TokenType.ASSIGNMENT, "Expected <-- after FOR variable");
 
             IExpressionNode start = ParseExpression();
 
