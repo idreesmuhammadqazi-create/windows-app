@@ -123,7 +123,7 @@ namespace PseudoRun.Desktop.ViewModels
                 try
                 {
                     var content = await _fileService.LoadProgramAsync(dialog.FileName);
-                    Code = content;
+                    Code = content ?? string.Empty;
                     CurrentFilePath = dialog.FileName;
                     Output = "";
                 }

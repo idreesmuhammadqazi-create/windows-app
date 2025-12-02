@@ -9,6 +9,7 @@ namespace PseudoRun.Desktop.Validator
     public class ValidationError
     {
         public int Line { get; set; }
+        public int Column { get; set; }
         public string Message { get; set; } = string.Empty;
         public ErrorType Type { get; set; }
     }

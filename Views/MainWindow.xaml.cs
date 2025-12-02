@@ -21,8 +21,8 @@ namespace PseudoRun.Desktop.Views
 
             // Get services from DI
             DataContext = App.GetService<MainViewModel>();
-            _exportService = App.GetService<IExportService>();
-            _fileService = App.GetService<IFileService>();
+            _exportService = App.GetService<IExportService>()!;
+            _fileService = App.GetService<IFileService>()!;
 
             // Load recent files menu
             Loaded += (s, e) => LoadRecentFilesMenu();

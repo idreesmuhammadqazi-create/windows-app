@@ -54,7 +54,7 @@ namespace PseudoRun.Desktop.Views.Controls
         private void SetupSyntaxHighlighting()
         {
             // Create custom syntax highlighting for IGCSE pseudocode
-            var highlighting = new HighlightingDefinition();
+            var highlighting = new ICSharpCode.AvalonEdit.Highlighting.HighlightingDefinition();
 
             // Keywords
             var keywordColor = new HighlightingColor
