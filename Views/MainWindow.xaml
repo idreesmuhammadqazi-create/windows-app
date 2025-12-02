@@ -3,9 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:PseudoRun.Desktop.Views.Controls"
         mc:Ignorable="d"
         Title="PseudoRun Desktop" Height="800" Width="1200"
-        Background="{StaticResource BackgroundBrush}">
+        Background="{StaticResource BackgroundBrush}"
+        AllowDrop="True">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -22,6 +24,10 @@
                 <MenuItem Header="_Open..." Command="{Binding OpenFileCommand}" InputGestureText="Ctrl+O"/>
                 <MenuItem Header="_Save" Command="{Binding SaveFileCommand}" InputGestureText="Ctrl+S"/>
                 <MenuItem Header="Save _As..." Command="{Binding SaveFileAsCommand}" InputGestureText="Ctrl+Shift+S"/>
+                <Separator/>
+                <MenuItem Header="_Recent Files" Name="RecentFilesMenu">
+                    <MenuItem Header="(No recent files)" IsEnabled="False" Name="NoRecentFilesPlaceholder"/>
+                </MenuItem>
                 <Separator/>
                 <MenuItem Header="_Export">
                     <MenuItem Header="Export to _PDF..." Click="ExportToPdf_Click"/>
@@ -42,6 +48,7 @@
                 <MenuItem Header="_Exam Mode" Click="ExamMode_Click"/>
             </MenuItem>
             <MenuItem Header="_Help">
+                <MenuItem Header="_Examples" Click="Examples_Click"/>
                 <MenuItem Header="_About" Click="About_Click"/>
             </MenuItem>
         </Menu>
@@ -54,6 +61,8 @@
             <Separator/>
             <Button Content="Run" Command="{Binding RunProgramCommand}" ToolTip="Run Program (F5)" Style="{StaticResource PrimaryButton}"/>
             <Button Content="Stop" Command="{Binding StopProgramCommand}" ToolTip="Stop Execution (Shift+F5)"/>
+            <Separator/>
+            <controls:DebugControls DataContext="{Binding DebugViewModel}"/>
         </ToolBar>
 
         <!-- Main Content Area -->
@@ -66,37 +75,74 @@
 
             <!-- Editor Area -->
             <Border Grid.Column="0" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1" Margin="5">
-                <TextBox Text="{Binding Code, UpdateSourceTrigger=PropertyChanged}"
-                         AcceptsReturn="True"
-                         FontFamily="Consolas"
-                         FontSize="14"
-                         VerticalScrollBarVisibility="Auto"
-                         HorizontalScrollBarVisibility="Auto"/>
+                <controls:EditorControl Text="{Binding Code, UpdateSourceTrigger=PropertyChanged}"/>
             </Border>
 
             <!-- Splitter -->
             <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch" Background="{StaticResource BorderBrush}"/>
 
-            <!-- Output Area -->
-            <Border Grid.Column="2" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1" Margin="5">
-                <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <TextBlock Text="{Binding Output}"
-                               FontFamily="Consolas"
-                               FontSize="12"
-                               Padding="5"
-                               TextWrapping="Wrap"/>
-                </ScrollViewer>
-            </Border>
+            <!-- Output, Error, and Debug Area -->
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- Output Panel -->
+                <Border Grid.Row="0" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1" Margin="5,5,5,0">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <TextBlock Text="{Binding Output}"
+                                   FontFamily="Consolas"
+                                   FontSize="12"
+                                   Padding="5"
+                                   TextWrapping="Wrap"/>
+                    </ScrollViewer>
+                </Border>
+
+                <!-- Error Panel -->
+                <controls:ErrorPanel Grid.Row="1" DataContext="{Binding ErrorViewModel}"/>
+
+                <!-- Variables Panel (Debug Mode) -->
+                <Expander Grid.Row="2"
+                          Header="Variables"
+                          IsExpanded="True"
+                          Margin="5,0,5,5"
+                          BorderBrush="{StaticResource BorderBrush}"
+                          BorderThickness="1"
+                          Visibility="{Binding DebugViewModel.IsDebugging, Converter={StaticResource BoolToVisibilityConverter}}">
+                    <controls:VariablesPanel DataContext="{Binding DebugViewModel}" MaxHeight="200"/>
+                </Expander>
+            </Grid>
         </Grid>
 
-        <!-- Status Bar -->
-        <StatusBar Grid.Row="3">
+        <!-- Enhanced Status Bar -->
+        <StatusBar Grid.Row="3" Background="{StaticResource SurfaceBrush}">
             <StatusBarItem>
-                <TextBlock Text="{Binding CurrentFilePath, StringFormat='File: {0}', TargetNullValue='Untitled'}"/>
+                <TextBlock Text="{Binding CurrentFilePath, StringFormat='📄 {0}', TargetNullValue='📄 Untitled'}"/>
             </StatusBarItem>
             <Separator/>
             <StatusBarItem>
-                <TextBlock Text="{Binding IsRunning, StringFormat='Status: {0}', ConverterParameter='Running|Ready'}"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Ln "/>
+                    <TextBlock Text="{Binding CurrentLine}" FontWeight="Bold"/>
+                    <TextBlock Text=", Col " Margin="5,0,0,0"/>
+                    <TextBlock Text="{Binding CurrentColumn}" FontWeight="Bold"/>
+                </StackPanel>
+            </StatusBarItem>
+            <Separator/>
+            <StatusBarItem>
+                <TextBlock>
+                    <Run Text="Status: "/>
+                    <Run Text="{Binding IsRunning, Mode=OneWay}" FontWeight="Bold"/>
+                </TextBlock>
+            </StatusBarItem>
+            <Separator/>
+            <StatusBarItem HorizontalAlignment="Right">
+                <TextBlock Text="{Binding ErrorViewModel.ErrorCount, StringFormat='⚠ {0} errors'}"
+                           Foreground="{StaticResource ErrorBrush}"
+                           FontWeight="Bold"
+                           Visibility="{Binding ErrorViewModel.HasErrors, Converter={StaticResource BoolToVisibilityConverter}}"/>
             </StatusBarItem>
         </StatusBar>
     </Grid>
