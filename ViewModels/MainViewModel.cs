@@ -2,6 +2,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using PseudoRun.Desktop.Services;
 using System;
+using System.Linq;
 using System.Windows;
 using System.Threading.Tasks;
 
@@ -62,10 +63,10 @@ namespace PseudoRun.Desktop.ViewModels
             try
             {
                 // Validate first
-                var validationResult = await _validationService.ValidateAsync(Code);
-                if (!validationResult.IsValid)
+                var errors = await _validationService.ValidateAsync(Code);
+                if (errors.Any())
                 {
-                    foreach (var error in validationResult.Errors)
+                    foreach (var error in errors)
                     {
                         ErrorViewModel.AddError(error.Message, "Syntax Error", error.Line, error.Column);
                         Output += $"Syntax Error (Line {error.Line}, Col {error.Column}): {error.Message}\n";
