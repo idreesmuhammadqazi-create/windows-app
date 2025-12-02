@@ -48,7 +48,7 @@ namespace PseudoRun.Desktop.Utilities
                 CheckArraySyntax(line, lineNumber, report);
                 CheckStringComparison(line, lineNumber, report);
                 CheckCaseStatementStructure(line, lineNumber, report);
-                CheckLoopSyntax(line, lineNumber, report);
+                CheckLoopSyntax(line, lineNumber, report, lines);
                 CheckProcedureFunctionCalls(line, lineNumber, report);
                 CheckComments(line, lineNumber, report);
                 CheckIndentation(lines[i], lineNumber, report);
@@ -200,7 +200,7 @@ namespace PseudoRun.Desktop.Utilities
             }
         }
 
-        private static void CheckLoopSyntax(string line, int lineNumber, MistakeReport report)
+        private static void CheckLoopSyntax(string line, int lineNumber, MistakeReport report, string[] lines)
         {
             var upper = line.ToUpper();
 

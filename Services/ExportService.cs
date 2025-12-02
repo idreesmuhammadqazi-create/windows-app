@@ -6,6 +6,7 @@ using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
 using PdfSharp.Pdf;
 using PdfSharp.Drawing;
+using PdfSharp.Quality;
 
 namespace PseudoRun.Desktop.Services
 {
@@ -26,9 +27,9 @@ namespace PseudoRun.Desktop.Services
                 XGraphics gfx = XGraphics.FromPdfPage(page);
 
                 // Define fonts
-                XFont titleFont = new XFont("Arial", 16, XFontStyle.Bold);
-                XFont codeFont = new XFont("Consolas", 10, XFontStyle.Regular);
-                XFont infoFont = new XFont("Arial", 9, XFontStyle.Regular);
+                XFont titleFont = new XFont("Arial", 16, XFontStyleEx.Bold);
+                XFont codeFont = new XFont("Consolas", 10, XFontStyleEx.Regular);
+                XFont infoFont = new XFont("Arial", 9, XFontStyleEx.Regular);
 
                 // Starting position
                 double yPosition = 50;
