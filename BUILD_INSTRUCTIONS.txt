@@ -1,0 +1,56 @@
+================================================================================
+  PseudoRun Desktop - How to Build Executable
+================================================================================
+
+QUICK START:
+------------
+1. Install .NET 8 SDK from: https://dotnet.microsoft.com/download/dotnet/8.0
+2. Open Command Prompt in this folder
+3. Run: build-exe.bat
+4. Find PseudoRun.exe in the "publish" folder
+
+DETAILED INSTRUCTIONS:
+----------------------
+See BUILD_EXE.md for complete documentation including:
+- Different build options
+- Platform-specific builds
+- Optimization flags
+- Troubleshooting guide
+- Distribution instructions
+
+FILES PROVIDED:
+---------------
+- BUILD_EXE.md      : Complete build documentation
+- build-exe.bat     : Windows build script (double-click to run)
+- build-exe.sh      : Linux/Mac build script
+
+MANUAL BUILD COMMAND:
+---------------------
+If you prefer to build manually, open Command Prompt here and run:
+
+dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -o ./publish
+
+OUTPUT:
+-------
+- Single executable: publish\PseudoRun.exe
+- Size: ~80-100 MB
+- Includes: .NET runtime (no installation needed on target machine)
+- Ready to: Copy and run on any Windows 10/11 machine
+
+WHAT YOU GET:
+-------------
+✓ Self-contained executable (no dependencies)
+✓ IGCSE pseudocode editor with syntax highlighting
+✓ 23 comprehensive examples
+✓ 50 practice problems with solutions
+✓ Interactive tutorial system
+✓ Debug mode with variable tracking
+✓ Export to DOCX and PDF
+✓ Syntax reference guide
+
+REQUIREMENTS:
+-------------
+Build machine: .NET 8 SDK
+Target machine: Windows 10/11 (64-bit) - NO .NET REQUIRED
+
+================================================================================

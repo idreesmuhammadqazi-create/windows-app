@@ -5,6 +5,7 @@ using System;
 using System.Linq;
 using System.Windows;
 using System.Threading.Tasks;
+using System.Windows.Threading;
 
 namespace PseudoRun.Desktop.ViewModels
 {
@@ -14,6 +15,7 @@ namespace PseudoRun.Desktop.ViewModels
         private readonly ISettingsService _settingsService;
         private readonly IInterpreterService _interpreterService;
         private readonly IValidationService _validationService;
+        private readonly DispatcherTimer _validationTimer;
 
         [ObservableProperty]
         private string _code = string.Empty;
@@ -49,6 +51,51 @@ namespace PseudoRun.Desktop.ViewModels
             _settingsService = settingsService;
             _interpreterService = interpreterService;
             _validationService = validationService;
+
+            // Set up real-time validation with debouncing (500ms delay)
+            _validationTimer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromMilliseconds(500)
+            };
+            _validationTimer.Tick += async (s, e) =>
+            {
+                _validationTimer.Stop();
+                await ValidateCodeAsync();
+            };
+        }
+
+        partial void OnCodeChanged(string value)
+        {
+            // Restart the debounce timer when code changes
+            _validationTimer.Stop();
+            _validationTimer.Start();
+        }
+
+        private async Task ValidateCodeAsync()
+        {
+            if (string.IsNullOrWhiteSpace(Code))
+            {
+                ErrorViewModel.ClearErrorsCommand.Execute(null);
+                return;
+            }
+
+            try
+            {
+                var errors = await _validationService.ValidateAsync(Code);
+
+                // Clear previous errors
+                ErrorViewModel.ClearErrorsCommand.Execute(null);
+
+                // Add new errors
+                foreach (var error in errors)
+                {
+                    ErrorViewModel.AddError(error.Message, "Syntax Error", error.Line, error.Column);
+                }
+            }
+            catch (Exception)
+            {
+                // Silently fail validation - don't interrupt user typing
+            }
         }
 
         [RelayCommand]
