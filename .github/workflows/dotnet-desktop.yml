@@ -24,9 +24,6 @@ jobs:
     - name: Build
       run: dotnet build PseudoRun.Desktop.csproj --configuration Release --no-restore
 
-    - name: Upload EXE
-      uses: actions/upload-artifact@v4
-      with:
-        name: PseudoRun-EXE
-        path: |
-          **/bin/Release/**/PseudoRun.Desktop.exe
+    - name: List build output
+      run: dir /s bin
+
