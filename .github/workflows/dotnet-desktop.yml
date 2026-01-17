@@ -21,12 +21,13 @@ jobs:
     - name: Restore
       run: dotnet restore PseudoRun.Desktop.csproj
 
-    - name: Build
-      run: dotnet build PseudoRun.Desktop.csproj --configuration Release --no-restore
+    - name: Publish
+      run: dotnet publish PseudoRun.Desktop.csproj -c Release -r win-x64 --self-contained false
 
-    - name: Upload EXE
+    - name: Upload Published App
       uses: actions/upload-artifact@v4
       with:
-          name: PseudoRun-EXE
-          path: |
-            bin/Release/**/PseudoRun.exe
+        name: PseudoRun-Publish
+        path: |
+          bin/Release/**/publish/**
+
